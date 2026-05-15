@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Najdi terapeuta</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; color: #333; }
+
+        header {
+            background: #2d6a4f;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { opacity: 0.85; font-size: 1rem; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+        .filtry {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .filtry h2 { margin-bottom: 16px; color: #2d6a4f; font-size: 1.1rem; }
+        .filtry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .filtry input, .filtry select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .filtry input:focus, .filtry select:focus { border-color: #2d6a4f; }
+        label { display: block; font-size: 0.85rem; color: #666; margin-bottom: 4px; }
+
+        .btn {
+            background: #2d6a4f;
+            color: white;
+            border: none;
+            padding: 11px 28px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn:hover { background: #1b4332; }
+        .btn-reset {
+            background: #eee;
+            color: #555;
+            margin-left: 10px;
+        }
+        .btn-reset:hover { background: #ddd; }
+
+        .vysledky-info {
+            color: #555;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+
+        .karty { display: grid; gap: 16px; }
+
+        .karta {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            border-left: 4px solid #2d6a4f;
+            transition: transform 0.15s;
+        }
+        .karta:hover { transform: translateY(-2px); }
+
+        .karta-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        .karta h3 { font-size: 1.1rem; color: #1b4332; }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+        .badge-zelena { background: #d8f3dc; color: #1b4332; }
+        .badge-oranzova { background: #fff3cd; color: #856404; }
+        .badge-seda { background: #eee; color: #666; }
+
+        .karta-info { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+        .tag {
+            background: #f0f4f8;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            color: #444;
+        }
+        .tag span { font-weight: 600; color: #2d6a4f; }
+
+        .karta-web { margin-top: 10px; font-size: 0.88rem; }
+        .karta-web a { color: #2d6a4f; text-decoration: none; }
+        .karta-web a:hover { text-decoration: underline; }
+
+        .prazdno {
+            text-align: center;
+            padding: 60px 20px;
+            color: #888;
+        }
+        .prazdno h3 { font-size: 1.3rem; margin-bottom: 8px; }
+    .btn-kontakt {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: #2d6a4f;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    transition: background 0.2s;
+}
+.btn-kontakt:hover { background: #1b4332; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🌿 Najdi terapeuta</h1>
+    <p>Databáze {{ celkem }} psychoterapeutů z czap.cz</p>
+</header>
+
+<div class="container">
+    <div class="filtry">
+        <h2>Filtrovat</h2>
+        <form method="GET">
+            <div class="filtry-grid">
+                <div>
+                    <label>Město</label>
+                    <input type="text" name="mesto" value="{{ mesto }}" placeholder="např. Praha, Brno...">
+                </div>
+                <div>
+                    <label>Dostupnost</label>
+                    <select name="dostupnost">
+                        <option value="">Všechny</option>
+                        <option value="Přijímám nové klienty" {% if dostupnost == "Přijímám nové klienty" %}selected{% endif %}>Přijímám nové klienty</option>
+                        <option value="Nepřijímám" {% if dostupnost == "Nepřijímám" %}selected{% endif %}>Nepřijímám nové klienty</option>
+                        <option value="na vyžádání" {% if dostupnost == "na vyžádání" %}selected{% endif %}>Info na vyžádání</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Forma</label>
+                    <select name="forma">
+                        <option value="">Všechny</option>
+                        <option value="Online" {% if forma == "Online" %}selected{% endif %}>Online</option>
+                        <option value="Osobně" {% if forma == "Osobně" %}selected{% endif %}>Osobně</option>
+                        <option value="Telefonicky" {% if forma == "Telefonicky" %}selected{% endif %}>Telefonicky</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Styl terapie</label>
+                    <input type="text" name="styl" value="{{ styl }}" placeholder="např. KBT, Gestalt...">
+                </div>
+            </div>
+            <button type="submit" class="btn">🔍 Hledat</button>
+            <a href="/"><button type="button" class="btn btn-reset">Zrušit filtry</button></a>
+        </form>
+    </div>
+
+    <p class="vysledky-info">
+        {% if celkem == 0 %}
+            Žádné výsledky
+        {% elif celkem > 50 %}
+            Zobrazeno 50 z {{ celkem }} terapeutů — upřesněte filtry
+        {% else %}
+            Nalezeno {{ celkem }} terapeutů
+        {% endif %}
+    </p>
+
+    {% if terapeuti %}
+    <div class="karty">
+        {% for t in terapeuti %}
+        <div class="karta">
+            <div class="karta-header">
+                <h3>{{ t.jmeno }}</h3>
+                {% if "Přijímám" in t.dostupnost %}
+                    <span class="badge badge-zelena">✓ Přijímá klienty</span>
+                {% elif "Nepřijímám" in t.dostupnost %}
+                    <span class="badge badge-oranzova">✗ Nepřijímá</span>
+                {% else %}
+                    <span class="badge badge-seda">Info na vyžádání</span>
+                {% endif %}
+            </div>
+
+            <div class="karta-info">
+                {% if t.mesto %}
+                <div class="tag">📍 <span>{{ t.mesto }}</span></div>
+                {% endif %}
+                {% if t.forma %}
+                <div class="tag">🖥️ {{ t.forma }}</div>
+                {% endif %}
+                {% if t.cilova_skupina %}
+                <div class="tag">👥 {{ t.cilova_skupina }}</div>
+                {% endif %}
+                {% if t.styl_terapie %}
+                <div class="tag">🧠 {{ t.styl_terapie }}</div>
+                {% endif %}
+            </div>
+
+            {% if t.web and t.web != "neuvedeno" and t.web != "Neuvedeno" %}
+            <div class="karta-web">
+    <a href="{{ t.web if t.web.startswith('http') else 'https://' + t.web }}" target="_blank" class="btn-kontakt">
+        🔗 Přejít na web / kontakt
+    </a>
+</div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="prazdno">
+        <h3>😕 Žádné výsledky</h3>
+        <p>Zkuste změnit filtry</p>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

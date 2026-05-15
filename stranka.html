@@ -1,0 +1,882 @@
+<!DOCTYPE html><html lang="en" class="no-js "><!--<![endif]--><head id="Head1"><meta http-equiv="origin-trial" content="A7vZI3v+Gz7JfuRolKNM4Aff6zaGuT7X0mf3wtoZTnKv6497cVMnhy03KDqX7kBz/q/iidW7srW31oQbBt4VhgoAAACUeyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGUuY29tOjQ0MyIsImZlYXR1cmUiOiJEaXNhYmxlVGhpcmRQYXJ0eVN0b3JhZ2VQYXJ0aXRpb25pbmczIiwiZXhwaXJ5IjoxNzU3OTgwODAwLCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==">
+		<style data-tippy-stylesheet="">.tippy-box[data-animation=fade][data-state=hidden]{opacity:0}[data-tippy-root]{max-width:calc(100vw - 10px)}.tippy-box{position:relative;background-color:#333;color:#fff;border-radius:4px;font-size:14px;line-height:1.4;white-space:normal;outline:0;transition-property:transform,visibility,opacity}.tippy-box[data-placement^=top]>.tippy-arrow{bottom:0}.tippy-box[data-placement^=top]>.tippy-arrow:before{bottom:-7px;left:0;border-width:8px 8px 0;border-top-color:initial;transform-origin:center top}.tippy-box[data-placement^=bottom]>.tippy-arrow{top:0}.tippy-box[data-placement^=bottom]>.tippy-arrow:before{top:-7px;left:0;border-width:0 8px 8px;border-bottom-color:initial;transform-origin:center bottom}.tippy-box[data-placement^=left]>.tippy-arrow{right:0}.tippy-box[data-placement^=left]>.tippy-arrow:before{border-width:8px 0 8px 8px;border-left-color:initial;right:-7px;transform-origin:center left}.tippy-box[data-placement^=right]>.tippy-arrow{left:0}.tippy-box[data-placement^=right]>.tippy-arrow:before{left:-7px;border-width:8px 8px 8px 0;border-right-color:initial;transform-origin:center right}.tippy-box[data-inertia][data-state=visible]{transition-timing-function:cubic-bezier(.54,1.5,.38,1.11)}.tippy-arrow{width:16px;height:16px;color:#333}.tippy-arrow:before{content:"";position:absolute;border-color:transparent;border-style:solid}.tippy-content{position:relative;padding:5px 9px;z-index:1}</style><link rel="stylesheet" type="text/css" href="https://kit-pro.fontawesome.com/releases/latest/css/pro.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://www.czap.cz/BuiltTheme/showcase_teal.v3.0/92fc0755/Styles/combined.css" rel="stylesheet" type="text/css"><link href="https://www.czap.cz/resources/theme/customStyles.css?t=638269594439760000" rel="stylesheet" type="text/css"><link href="https://www.czap.cz/resources/theme/user.css?t=638278560650000000" rel="stylesheet" type="text/css"><link href="https://live-sf.wildapricot.org/WebUI/built9.15.0-4b154b1/scripts/public/react/index-84b33b4.css" rel="stylesheet" type="text/css"><link href="https://live-sf.wildapricot.org/WebUI/built9.15.0-4b154b1/css/shared/ui/shared-ui-compiled.css" rel="stylesheet" type="text/css"><script type="text/javascript" async="" charset="utf-8" src="https://www.gstatic.com/recaptcha/releases/U5VsmTDhJM1iOJUyw4DEUTYv/recaptcha__cs.js" crossorigin="anonymous" integrity="sha384-L+PJWEwgZcmhSlN3d58BwxIAyQZegMVB9oJtEwvIaXjn1mQyBjrsHuMWgOUL4GUp"></script><script src="https://connect.facebook.net/signals/config/555247127243768?v=2.9.319&amp;r=stable&amp;domain=www.czap.cz&amp;hme=7441a59ee5070e08bd0157a62d39bd95bf3afdcc83dafbad800e78b5416300a9&amp;ex_m=104%2C207%2C155%2C22%2C72%2C73%2C146%2C68%2C67%2C11%2C164%2C90%2C16%2C138%2C48%2C147%2C77%2C112%2C47%2C127%2C39%2C75%2C78%2C134%2C160%2C166%2C8%2C4%2C5%2C7%2C6%2C3%2C91%2C101%2C167%2C172%2C221%2C62%2C188%2C189%2C55%2C278%2C30%2C74%2C233%2C232%2C231%2C23%2C33%2C103%2C61%2C10%2C63%2C97%2C98%2C99%2C105%2C130%2C31%2C29%2C132%2C133%2C129%2C128%2C156%2C76%2C159%2C157%2C158%2C50%2C60%2C123%2C15%2C163%2C45%2C265%2C266%2C264%2C26%2C27%2C28%2C18%2C20%2C44%2C40%2C42%2C41%2C83%2C92%2C96%2C110%2C145%2C148%2C46%2C111%2C24%2C21%2C119%2C69%2C36%2C150%2C149%2C151%2C142%2C140%2C25%2C35%2C59%2C109%2C162%2C70%2C17%2C153%2C114%2C81%2C66%2C19%2C85%2C86%2C116%2C84%2C136%2C135%2C139%2C161%2C34%2C280%2C296%2C214%2C203%2C204%2C202%2C299%2C290%2C52%2C215%2C107%2C131%2C80%2C121%2C54%2C49%2C113%2C120%2C126%2C58%2C64%2C152%2C115%2C37%2C32%2C53%2C56%2C100%2C165%2C1%2C124%2C14%2C122%2C12%2C2%2C57%2C93%2C65%2C118%2C89%2C88%2C168%2C169%2C94%2C95%2C9%2C125%2C102%2C51%2C143%2C87%2C79%2C71%2C117%2C106%2C43%2C144%2C0%2C82%2C137%2C141%2C154%2C38%2C108%2C13%2C170" async=""></script><script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script><script type="text/javascript" language="javascript" id="idJavaScriptEnvironment">var bonaPage_BuildVer='9.15.0-4b154b1';
+var bonaPage_AdminBackendUrl = '/admin/';
+var bonaPage_StatRes='https://live-sf.wildapricot.org/WebUI/';
+var bonaPage_InternalPageType = { isUndefinedPage : false,isWebPage : true,isAdminPage : false,isDialogPage : false,isSystemPage : false,isErrorPage : false,isError404Page : false };
+var bonaPage_PageView = { isAnonymousView : true,isMemberView : false,isAdminView : false };
+var WidgetMode = 0;
+var bonaPage_IsUserAnonymous = true;
+var bonaPage_ThemeVer='92fc0755638278560650000000638269594439760000'; var bonaPage_ThemeId = 'showcase_teal.v3.0'; var bonaPage_ThemeVersion = '3.0';
+var bonaPage_id='1075324'; version_id='';
+if (bonaPage_InternalPageType && (bonaPage_InternalPageType.isSystemPage || bonaPage_InternalPageType.isWebPage) && window.self !== window.top) { var success = true; try { var tmp = top.location.href; if (!tmp) { top.location = self.location; } } catch (err) { try { if (self != top) { top.location = self.location; } } catch (err) { try { if (self != top) { top = self; } success = false; } catch (err) { success = false; } } success = false; } if (!success) { window.onload = function() { document.open('text/html', 'replace'); document.write('<ht'+'ml><he'+'ad></he'+'ad><bo'+'dy><h1>Wrong document context!</h1></bo'+'dy></ht'+'ml>'); document.close(); } } }
+try { function waMetricsGlobalHandler(args) { if (WA.topWindow.waMetricsOuterGlobalHandler && typeof(WA.topWindow.waMetricsOuterGlobalHandler) === 'function') { WA.topWindow.waMetricsOuterGlobalHandler(args); }}} catch(err) {}
+ try { if (parent && parent.BonaPage) parent.BonaPage.implementBonaPage(window); } catch (err) { }
+try { document.write('<style type="text/css"> .WaHideIfJSEnabled, .HideIfJSEnabled { display: none; } </style>'); } catch(err) {}
+var bonaPage_WebPackRootPath = 'https://live-sf.wildapricot.org/WebUI/built9.15.0-4b154b1/scripts/public/react/';</script><style type="text/css"> .WaHideIfJSEnabled, .HideIfJSEnabled { display: none; } </style><script type="text/javascript" language="javascript" src="https://live-sf.wildapricot.org/WebUI/built9.15.0-4b154b1/scripts/shared/bonapagetop/bonapagetop-compiled.js" id="idBonaPageTop"></script><script type="text/javascript" language="javascript" src="https://live-sf.wildapricot.org/WebUI/built9.15.0-4b154b1/scripts/public/react/index-84b33b4.js" id="ReactPublicJs"></script><script type="text/javascript" language="javascript" src="https://live-sf.wildapricot.org/WebUI/built9.15.0-4b154b1/scripts/shared/ui/shared-ui-compiled.js" id="idSharedJs"></script><style type="text/css">.CodeMirror { font-family: monospace; height: 300px; }.CodeMirror-scroll { overflow: auto; }.CodeMirror-lines { padding: 4px 0; }.CodeMirror pre { padding: 0 4px; }.CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler { background-color: white; }.CodeMirror-gutters { border-right: 1px solid #ddd; background-color: #f7f7f7; white-space: nowrap; }.CodeMirror-linenumbers {}.CodeMirror-linenumber { padding: 0 3px 0 5px; min-width: 20px; text-align: right; color: #999; }.CodeMirror div.CodeMirror-cursor { border-left: 1px solid black; z-index: 3; }.CodeMirror div.CodeMirror-secondarycursor { border-left: 1px solid silver; }.CodeMirror.cm-keymap-fat-cursor div.CodeMirror-cursor { width: auto; border: 0; background: #7e7; z-index: 1; }.CodeMirror div.CodeMirror-cursor.CodeMirror-overwrite {}.cm-tab { display: inline-block; }.cm-s-default .cm-keyword {color: #708;}.cm-s-default .cm-atom {color: #219;}.cm-s-default .cm-number {color: #164;}.cm-s-default .cm-def {color: #00f;}.cm-s-default .cm-variable {color: black;}.cm-s-default .cm-variable-2 {color: #05a;}.cm-s-default .cm-variable-3 {color: #085;}.cm-s-default .cm-property {color: black;}.cm-s-default .cm-operator {color: black;}.cm-s-default .cm-comment {color: #a50;}.cm-s-default .cm-string {color: #a11;}.cm-s-default .cm-string-2 {color: #f50;}.cm-s-default .cm-meta {color: #555;}.cm-s-default .cm-qualifier {color: #555;}.cm-s-default .cm-builtin {color: #30a;}.cm-s-default .cm-bracket {color: #997;}.cm-s-default .cm-tag {color: #170;}.cm-s-default .cm-attribute {color: #00c;}.cm-s-default .cm-header {color: blue;}.cm-s-default .cm-quote {color: #090;}.cm-s-default .cm-hr {color: #999;}.cm-s-default .cm-link {color: #00c;}.cm-negative {color: #d44;}.cm-positive {color: #292;}.cm-header, .cm-strong {font-weight: bold;}.cm-em {font-style: italic;}.cm-link {text-decoration: underline;}.cm-s-default .cm-error {color: #f00;}.cm-invalidchar {color: #f00;}div.CodeMirror span.CodeMirror-matchingbracket {color: #0f0;}div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}.CodeMirror-activeline-background {background: #e8f2ff;}.CodeMirror { line-height: 1; position: relative; overflow: hidden; background: white; color: black; }.CodeMirror-scroll { margin-bottom: -30px; margin-right: -30px; padding-bottom: 30px; padding-right: 30px; height: 100%; outline: none; position: relative; -moz-box-sizing: content-box; box-sizing: content-box; }.CodeMirror-sizer { position: relative; }.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler { position: absolute; z-index: 6; display: none; }.CodeMirror-vscrollbar { right: 0; top: 0; overflow-x: hidden; overflow-y: scroll; }.CodeMirror-hscrollbar { bottom: 0; left: 0; overflow-y: hidden; overflow-x: scroll; }.CodeMirror-scrollbar-filler { right: 0; bottom: 0; }.CodeMirror-gutter-filler { left: 0; bottom: 0; }.CodeMirror-gutters { position: absolute; left: 0; top: 0; padding-bottom: 30px; z-index: 3; }.CodeMirror-gutter { white-space: normal; height: 100%; -moz-box-sizing: content-box; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block;*zoom:1;*display:inline;}.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }.CodeMirror-lines { cursor: text; }.CodeMirror pre { -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0; border-width: 0; background: transparent; font-family: inherit; font-size: inherit; margin: 0; white-space: pre; word-wrap: normal; line-height: inherit; color: inherit; z-index: 2; position: relative; overflow: visible; }.CodeMirror-wrap pre { word-wrap: break-word; white-space: pre-wrap; word-break: normal; }.CodeMirror-code pre { border-right: 30px solid transparent; width: -webkit-fit-content; width: -moz-fit-content; width: fit-content; }.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }.CodeMirror-linebackground { position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 0; }.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }.CodeMirror-widget {}.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }.CodeMirror-measure { position: absolute; width: 100%; height: 0; overflow: hidden; visibility: hidden; }.CodeMirror-measure pre { position: static; }.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0; }.CodeMirror-focused div.CodeMirror-cursor { visibility: visible; }.CodeMirror-selected { background: #d9d9d9; }.CodeMirror-focused .CodeMirror-selected { background: #d7d4f0; }.cm-searching { background: #ffa; background: rgba(255, 255, 0, .4); }.CodeMirror span { *vertical-align: text-bottom; }@media print { .CodeMirror div.CodeMirror-cursor { visibility: hidden; }}.CodeMirror-matchingtag { background-color: #FFCCAA; }</style><style type="text/css">  DIV.dialogRoundedBoxContainerOldIE { filter: alpha(opacity=73); }  DIV.dialogRoundedBoxShadowOldIE { filter: progid:DXImageTransform.Microsoft.Blur(pixelRadius=15, makeShadow=true, shadowOpacity=0.23); }  DIV.dialogOuterHeadContainerShadowOldIE { filter: progid:DXImageTransform.Microsoft.Blur(pixelRadius=2, makeShadow=true, shadowOpacity=0.27); }  DIV.dialogInnerHeadContainerOldIE { filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr=#EEEEEE, endColorstr=#B7B7B7, gradientType=0); }</style><script type="text/javascript" language="javascript" src="https://live-sf.wildapricot.org/WebUI/built9.15.0-4b154b1/General.js" id=""></script><script type="text/javascript" language="javascript" src="https://www.czap.cz/BuiltTheme/showcase_teal.v3.0/92fc0755/Scripts/combined.js" id=""></script><title>Česká asociace pro psychoterapii, z.s. - Adresář</title>
+<meta name="Keywords" content="Česká asociace pro psychoterapii, adresář psychoterapeutů, seznam psychoterapeutů, psychoterapie, psychoterapeut, duševní zdraví, hledám pomoc, kontakt na psychologa, kontakt na psychoterapeuta, seznam terapeutů, ČAP, CZAP, psychoterapeutický výcvik, psychotesty, czap.cz, duševní zdraví, duševní hygiena, psychoterapeut Praha"><meta name="Description" content="Adresář kvalifikovaných psychoterapeutek a psychoterapeutů. Česká asociace pro psychoterapii je největším českým odborným spolkem sdružující více než 1100 kvalifikovaných psychoterapeutů napříč regiony."><link rel="shortcut icon" type="image/ico" href="/Resources/Pictures/favicon.ico">
+<meta name="google-site-verification" content="04EWz6wT4FviVj3wjA5pcLMPC2Scq6FF_XlXPK85F7M">
+<meta name="google-site-verification" content="7uocqWJs8B_mxrEklaSm1EEML_6S6l5O7cm17T2Yipc">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/Resources/Pictures/Favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/Resources/Pictures/Favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/Resources/Pictures/Favicon/favicon-16x16.png">
+<link rel="manifest" href="/Resources/Pictures/Favicon/site.webmanifest">
+<link rel="mask-icon" href="/Resources/Pictures/Favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/Resources/Pictures/Favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/Resources/Pictures/Favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '555247127243768');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=555247127243768&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code --><link rel="search" type="application/opensearchdescription+xml" title="www.czap.cz" href="/opensearch.ashx"><script type="text/javascript" src="https://www.czap.cz/resources/Theme/WildApricotTextManager/scripts/jspreadsheet.js"></script><script type="text/javascript" src="https://www.czap.cz/resources/Theme/WildApricotTextManager/scripts/jsuites.js"></script><script type="text/javascript" src="https://www.czap.cz/resources/Theme/WildApricotTextManager/scripts/functions.js"></script><script type="text/javascript" src="https://www.czap.cz/resources/Theme/WildApricotTextManager/scripts/inspector.js"></script><script type="text/javascript" src="https://www.czap.cz/resources/Theme/WildApricotTextManager/scripts/csv-parser.js"></script><script type="text/javascript" src="https://www.czap.cz/resources/Theme/WildApricotTextManager/scripts/color-thief.js"></script><script type="text/javascript" src="https://www.czap.cz/resources/Theme/WildApricotTextManager/scripts/popper.js"></script><script type="text/javascript" src="https://www.czap.cz/resources/Theme/WildApricotTextManager/scripts/tippy.js"></script><link href="https://fonts.googleapis.com" rel="preconnect"><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="true"><link type="text/css" rel="stylesheet" href="https://www.czap.cz/resources/Theme/WildApricotTextManager/css/default.css"><link type="text/css" rel="stylesheet" href="https://www.czap.cz/resources/Theme/WildApricotTextManager/css/jspreadsheet.css"><link type="text/css" rel="stylesheet" href="https://www.czap.cz/resources/Theme/WildApricotTextManager/css/jsuites.css"><style>#idFooterPoweredByContainer { text-align:center; }</style><style>#id_451BEvO > div:nth-child(1) > h2:nth-child(2) > font:nth-child(1) > img:nth-child(1) { color: #13519e }</style></head>
+  <body id="PAGEID_1075324" class="publicContentView LayoutMain" style="visibility: visible;">
+<div class="mLayout layoutMain state1" id="mLayout">
+<!-- header zone -->
+		<div class="zoneHeaderOuter zoneOuter">
+			<div class="zoneHeader container_12">
+				<div class="zoneHeaderInner zoneInner s1_grid_12 s2_grid_12 s3_grid_12">
+<div id="id_Header" data-componentid="Header" class="WaPlaceHolder WaPlaceHolderHeader" style=""><div style="margin:0;"><div id="id_UxGEl3I" data-componentid="UxGEl3I" class="WaLayoutContainerOnly" style="margin-top:0px;"><table cellspacing="0" cellpadding="0" class="WaLayoutTable" style=""><tbody><tr data-componentid="UxGEl3I_row" class="WaLayoutRow"><td id="id_8FzKXxc" data-componentid="8FzKXxc" class="WaLayoutItem" style="width:29%;"><div id="id_13UsmJR" class="WaLayoutPlaceHolder placeHolderContainer" data-componentid="13UsmJR" style=""><div style="padding-top:0px;"><div id="id_rJdFqwm" class="WaGadgetOnly WaGadgetContent  gadgetStyleNone" style="height: 100px;" data-componentid="rJdFqwm"><div class="gadgetStyleBody gadgetContentEditableArea" style="height: 100px;" data-editablearea="0" data-areaheight="100">
+<p><a href="/" target="_blank"><img src="/resources/Pictures/Logo/logo-barevne.png" alt="" title="" border="0" width="244" height="90" style=""></a><br></p></div>
+<script type="text/javascript">if (window.WA) { new WaContentGadgetResizer({ id: 'id_rJdFqwm' }); }</script>
+</div></div></div></td><td style="" data-componentid="8FzKXxc_separator" class="WaLayoutSeparator"><div style="width: inherit;"></div></td><td id="id_nK3TAar" data-componentid="nK3TAar" class="WaLayoutItem" style="width:53%;"><div id="id_rI3wDne" class="WaLayoutPlaceHolder placeHolderContainer" data-componentid="rI3wDne" style=""><div style="padding-top:0px;"><div id="id_umgTdlp" class="WaGadgetOnly WaGadgetContent  gadgetStyleNone" style="margin-top:4px;background-color:transparent;" data-componentid="umgTdlp"><div class="gadgetStyleBody gadgetContentEditableArea" style="padding-top:10px;" data-editablearea="0" data-areaheight="auto">
+<p style="margin-bottom: 0px !important;" align="center"><em><font color="#13519e" style="font-size: 16px;"><strong></strong></font></em></p><p class="quotedText"><font color="#13519e" style="font-size: 14px;"><strong>Jsme největší psychoterapeutickou asociací v ČR – sdružujeme přes 2 400 terapeutů a terapeutek napříč obory i regiony.</strong></font></p><p align="center"><em><font color="#13519e" style="font-size: 16px;"><strong></strong></font></em></p></div>
+</div></div></div></td><td style="" data-componentid="nK3TAar_separator" class="WaLayoutSeparator"><div style="width: inherit;"></div></td><td id="id_OBPTm39" data-componentid="OBPTm39" class="WaLayoutItem" style="width:17%;"><div id="id_RCTXFA5" class="WaLayoutPlaceHolder placeHolderContainer" data-componentid="RCTXFA5" style=""><div style="padding-top:0px;"><div id="id_p1kBNiL" class="WaGadgetOnly WaGadgetLoginForm  gadgetStyleNone" style="margin-top:40px;" data-componentid="p1kBNiL"><div class="gadgetStyleBody " style="" data-areaheight="auto">
+<div class="loginContainerWrapper alignCenter">
+    <div class="loginContainerInnerWrapper">
+      <a id="id_p1kBNiL_loginLink" class="loginLink">Přihlásit se</a>
+      <div id="id_p1kBNiL_loginContainer" class="loginContainer orientationVertical">
+        <div class="loginContainerForm orientationVertical oAuthIstrue">
+          <div class="loginContainerShadowBox">
+            <div class="openAuthFormContainer">
+<form method="post" action="https://www.czap.cz/Sys/Login/ExternalLogin" id="id_p1kBNiL_oAuthForm" class="oAuthForm" data-disableinadminmode="false">
+<div id="id_p1kBNiL_container" class="oAuthButtonsContainer">
+			  <!--  <a class="wa-authenticateLoginLink facebook" provider="Facebook">
+					<span class="authenticateLoginIcon" provider="Facebook"></span>
+					<span class="authenticateLoginText" provider="Facebook">Log in with Facebook</span>
+			  </a> --> <a class="wa-authenticateLoginLink googlePlus" provider="GooglePlus">
+					<span class="authenticateLoginIcon" provider="GooglePlus"></span>
+					<span class="authenticateLoginText" provider="GooglePlus">Log in with Google</span>
+			  </a><a class="wa-authenticateLoginLink microsoft" provider="Microsoft">
+					<span class="authenticateLoginIcon" provider="Microsoft"></span>
+					<span class="authenticateLoginText" provider="Microsoft">Log in with Microsoft</span>
+			  </a> <a class="wa-authenticateLoginLink apple" provider="Apple">
+					<span class="authenticateLoginIcon" provider="Apple"></span>
+					<span class="authenticateLoginText" provider="Apple">Log in with Apple</span>
+			  </a>
+			  <input type="hidden" name="ReturnUrl" value="">
+			  <input type="hidden" name="Provider" class="oAuthProvider" value="Undefined">   
+              <input type="hidden" id="id_p1kBNiL_browserCapabilities" name="browserCapabilities" value="WebKit;Exec Command;Client Cookies Enabled;Platform Compatible;Javascript Enabled;">  
+			</div>
+</form></div>
+ 
+    <script type="text/javascript" language="javascript">
+        jq$(document).ready(function()
+		{
+            new OAuthButtons({id:'id_p1kBNiL', formId: 'id_p1kBNiL_oAuthForm'});
+		});
+    </script>
+<form method="post" action="https://www.czap.cz/Sys/Login" id="id_p1kBNiL_form" class="generalLoginBox" data-disableinadminmode="false">
+<input type="hidden" name="ReturnUrl" id="id_p1kBNiL_returnUrl" value="">
+              <input type="hidden" name="CurrentUrl" id="id_p1kBNiL_currentUrl" value="/adresar">
+              <input type="hidden" name="browserData" id="id_p1kBNiL_browserField" value="WebKit;Exec Command;Client Cookies Enabled;Platform Compatible;Javascript Enabled;">
+              <div class="loginUserName">
+<div class="loginUserNameTextBox">
+		<input name="email" type="text" maxlength="100" placeholder="Email" id="id_p1kBNiL_userName" tabindex="1" class="emailTextBoxControl">
+	</div>
+</div><div class="loginPassword">
+    <div class="loginPasswordTextBox">
+		<div class="password-wrapper">
+			<input name="password" type="password" placeholder="Password" maxlength="50" id="id_p1kBNiL_password" tabindex="2" class="passwordTextBoxControl" autocomplete="off">
+			<i class="fa fa-eye-slash toggle-password" toggle="#id_p1kBNiL_password"></i>
+		</div>
+    </div>
+</div>
+<script>
+  if (!window.__passwordToggleInitialized) {
+    window.__passwordToggleInitialized = true;
+
+    $(document).ready(function () {
+      $('.toggle-password').each(function () {
+        const $icon = $(this);
+        const selector = $icon.attr('toggle');
+        if (!selector) return;
+
+        const $input = selector.startsWith('#') ? $(selector) : $('#' + selector);
+        if (!$input.length) return;
+
+        $icon.on('click', function () {
+          try {
+            const inputEl = $input[0];
+            const currentType = inputEl.getAttribute('type');
+
+            if (currentType === 'password') {
+              inputEl.setAttribute('type', 'text');
+              $icon.removeClass('fa-eye-slash').addClass('fa-eye');
+            } else {
+              inputEl.setAttribute('type', 'password');
+              $icon.removeClass('fa-eye').addClass('fa-eye-slash');
+            }
+          } catch (err) {
+            console.warn('Password toggle error:', err.message);
+          }
+        });
+      });
+    });
+  }
+</script>
+ 
+    <input id="g-recaptcha-invisible_p1kBNiL" name="g-recaptcha-invisible" value="recaptcha" type="hidden"> 
+    <div id="recapcha_placeholder_p1kBNiL" style="display: none;"><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe title="reCAPTCHA" width="256" height="60" role="presentation" name="a-mdm67saol9bp" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LfmM_UhAAAAAJSHT-BwkAlQgN0mMViOmaK7oEIV&amp;co=aHR0cHM6Ly93d3cuY3phcC5jejo0NDM.&amp;hl=cs&amp;v=U5VsmTDhJM1iOJUyw4DEUTYv&amp;theme=light&amp;size=invisible&amp;anchor-ms=20000&amp;execute-ms=30000&amp;cb=f3oz21gzh57x"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;"></iframe></div>
+    <span id="idReCaptchaValidator_p1kBNiL" errormessage="Please verify that you are not a robot" style="display:none" validatortype="method"></span>
+    <script>
+        $("#idReCaptchaValidator_p1kBNiL").on( "wavalidate", function(event, validationResult) {
+            if (grecaptcha.getResponse(widgetId_p1kBNiL).length == 0){
+                grecaptcha.execute(widgetId_p1kBNiL);	
+                validationResult.shouldStopValidation = true;
+                return;
+            }
+
+            validationResult.result = true;
+        });
+  
+            var widgetId_p1kBNiL;
+
+            var onloadCallback_p1kBNiL = function() {
+                // Renders the HTML element with id 'recapcha_placeholder_p1kBNiL' as a reCAPTCHA widget.
+                // The id of the reCAPTCHA widget is assigned to 'widgetId_p1kBNiL'.
+                widgetId_p1kBNiL = grecaptcha.render('recapcha_placeholder_p1kBNiL', {
+                'sitekey' : '6LfmM_UhAAAAAJSHT-BwkAlQgN0mMViOmaK7oEIV',
+                'size': 'invisible',
+                'callback': function(){
+                    document.getElementById('g-recaptcha-invisible_p1kBNiL').form.submit();
+                },
+                'theme' : 'light'
+            });
+        };
+    </script>
+	
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback_p1kBNiL&amp;render=explicit" async="" defer=""></script>
+
+ <div class="loginActionRememberMe"><input id="id_p1kBNiL_rememberMe" type="checkbox" name="rememberMe" tabindex="3" class="rememberMeCheckboxControl"><label for="id_p1kBNiL_rememberMe">Zapamatovat si mě</label></div><div class="loginAction">
+	<input type="submit" onclick="if (!WA.isWidgetMode &amp;&amp; !browserInfo.clientCookiesEnabled()) {alert('Warning: browser cookies disabled. Please enable them to use this website.'); return false;}" name="ctl03$ctl02$loginViewControl$loginControl$Login" value="Přihlásit se" id="id_p1kBNiL_loginAction" tabindex="4" class="loginButton loginButtonControl">	
+</div><div class="loginPasswordForgot">
+		<a rel="nofollow" href="https://www.czap.cz/Sys/ResetPasswordRequest">Obnovit heslo</a>
+	</div>
+</form></div>
+        </div>
+        </div>
+    </div>
+  </div>
+  <script>
+    jq$().ready(function() {
+      var browserField = document.getElementById('id_p1kBNiL' + '_browserField');
+
+      if (browserField) {
+        browserField.value = browserInfo.getBrowserCapabilitiesData();
+      }
+
+      jq$('#id_p1kBNiL' + '_form').FormValidate();
+      jq$('.WaGadgetLoginForm form').attr('data-disableInAdminMode', 'false');
+    });
+    
+    jq$(document).ready(function() { new LoginBox({Id:'id_p1kBNiL'}); });  
+  </script>  
+  </div>
+</div></div></div></td></tr></tbody></table> </div></div>
+</div></div>
+			</div>
+		</div>
+		<div class="zoneHeader1Outer zoneOuter">
+			<div class="zoneHeader1 container_12">
+				<div class="zoneHeader1Inner zoneInner s1_grid_12 s2_grid_12 s3_grid_12">
+					<div class="color"></div>
+<div id="id_Header1" data-componentid="Header1" class="WaPlaceHolder WaPlaceHolderHeader1" style=""><div style="margin:0;padding-top:0px;padding-bottom:0px;"><div id="id_snd3PO5" class="WaGadgetFirst WaGadgetMenuHorizontal  menuStyle002" style="margin-right:0px;" data-componentid="snd3PO5"><div class="menuInner"><div class="menuButton"></div>
+	<ul class="firstLevel" style=""><li class="">
+	<div class="item">
+		<a href="https://www.czap.cz/" title="Úvod"><span>Úvod</span></a>
+</div>
+</li><li class="dir">
+	<div class="item">
+		<a href="https://www.czap.cz/o-cap" title="O ČAP"><span>O ČAP</span></a>
+<ul class="secondLevel">
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/o-nas" title="O nás"><span>O nás</span></a>
+</div>
+</li>
+	
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/Dejme-psychoterapii-zelenou" title="Dejme psychoterapii zelenou"><span>Dejme psychoterapii zelenou</span></a>
+</div>
+</li>
+	
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/podminky-clenstvi" title="Členství v ČAP"><span>Členství v ČAP</span></a>
+</div>
+</li>
+	
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/obecne-podminky-ZP" title="Obecné podmínky spolupráce s pojišťovnami"><span>Obecné podmínky spolupráce s pojišťovnami</span></a>
+</div>
+</li>
+	
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/ochrana-klientu" title="Etika v ČAP"><span>Etika v ČAP</span></a>
+</div>
+</li>
+	
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/UKR" title="Про Чеську асоціацію психотерапії"><span>Про Чеську асоціацію психотерапії</span></a>
+</div>
+</li>
+	
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/organizacni-struktura" title="Organizacni struktura"><span>Organizacni struktura</span></a>
+</div>
+</li>
+	
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/Drahokam" title="Drahokam české psychoterapie"><span>Drahokam české psychoterapie</span></a>
+</div>
+</li>
+	
+</ul>
+</div>
+</li><li class="sel dir">
+	<div class="item">
+		<a href="https://www.czap.cz/adresar" title="Adresář"><span>Adresář</span></a>
+<ul class="secondLevel">
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/spoluprace-zp" title="Preventivní programy ZP"><span>Preventivní programy ZP</span></a>
+</div>
+</li>
+	
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/Psychoterapie-zdarma" title="Pro bono psychoterapie"><span>Pro bono psychoterapie</span></a>
+</div>
+</li>
+	
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/Foreign-therapists" title="Foreign language therapists"><span>Foreign language therapists</span></a>
+</div>
+</li>
+	
+</ul>
+</div>
+</li><li class="dir">
+	<div class="item">
+		<a href="https://www.czap.cz/O-psychoterapii" title="O psychoterapii"><span>O psychoterapii</span></a>
+<ul class="secondLevel">
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/Vkon-psychoterapie" title="Výkon psychoterapie"><span>Výkon psychoterapie</span></a>
+</div>
+</li>
+	
+</ul>
+</div>
+</li><li class="dir">
+	<div class="item">
+		<a href="https://www.czap.cz/Vzdelavani" title="Vzdělávání"><span>Vzdělávání</span></a>
+<ul class="secondLevel">
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/Certifikovane-vycviky" title="Certifikované výcviky"><span>Certifikované výcviky</span></a>
+</div>
+</li>
+	
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/Akce-CAP" title="Vzdělávací akce"><span>Vzdělávací akce</span></a>
+</div>
+</li>
+	
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/Supervize" title="Supervize"><span>Supervize</span></a>
+</div>
+</li>
+	
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/Mentoring" title="Mentoring"><span>Mentoring</span></a>
+</div>
+</li>
+	
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/ECP" title="Evropský psychoterapeutický certifikát"><span>Evropský psychoterapeutický certifikát</span></a>
+</div>
+</li>
+	
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/Knihovna" title="Knihovna"><span>Knihovna</span></a>
+</div>
+</li>
+	
+</ul>
+</div>
+</li><li class="dir last-child">
+	<div class="item">
+		<a href="https://www.czap.cz/Media" title="Média"><span>Média</span></a>
+<ul class="secondLevel">
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/Ke-stazeni" title="Ke stažení"><span>Ke stažení</span></a>
+</div>
+</li>
+	
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/Napsali-o-nas" title="Napsali o nás"><span>Napsali o nás</span></a>
+</div>
+</li>
+	
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/Zpravodaj-archiv" title="Pravidelný Zpravodaj"><span>Pravidelný Zpravodaj</span></a>
+</div>
+</li>
+	
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/Aktuality" title="Aktuality"><span>Aktuality</span></a>
+</div>
+</li>
+	
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/Dokumenty-o-vykonu-psychoterapie" title="Oborová diskuze"><span>Oborová diskuze</span></a>
+</div>
+</li>
+	
+<li class=" ">
+	<div class="item">
+		<a href="https://www.czap.cz/Pracovni-prilezitosti" title="Pracovní příležitosti"><span>Pracovní příležitosti</span></a>
+</div>
+</li>
+	
+</ul>
+</div>
+</li></ul>
+</div>
+
+<script type="text/javascript">
+  if (window.WaMenuHorizontal) { new WaMenuHorizontal({ id: "id_snd3PO5" }); }
+</script>
+</div><div id="id_GsQDnbD" class="WaGadget WaGadgetBreadcrumbs  gadgetStyle001" style="margin-right:10px;margin-bottom:10px;margin-left:10px;" data-componentid="GsQDnbD"><div class="gadgetStyleBody " style="" data-areaheight="auto">
+<ul>
+<li><a href="https://www.czap.cz/">Úvod</a></li>
+<li class="last">Adresář</li>
+</ul>
+</div>
+</div><div id="id_QPoefT2" class="WaGadgetLast WaGadgetContent  gadgetStyleNone" style="" data-componentid="QPoefT2"><div class="gadgetStyleBody gadgetContentEditableArea" style="padding-top:20px;" data-editablearea="0" data-areaheight="auto">
+<h1 class="contStyleHeading1"><font style="font-size: 36px;">hledáte psychoterapeutickou pomoc?</font></h1></div>
+</div></div>
+</div></div>
+			</div>
+		</div>
+		<div class="zoneHeader2Outer zoneOuter">
+			<div class="zoneHeader12 container_12">
+				<div class="zoneHeader2Inner zoneInner s1_grid_12 s2_grid_12 s3_grid_12">
+<div id="id_Header2" data-componentid="Header2" class="WaPlaceHolder WaPlaceHolderHeader2" style=""><div style="margin:0;padding-bottom:0px;"><div id="id_KPZ7PGt" data-componentid="KPZ7PGt" class="WaLayoutContainerOnly" style=""><table cellspacing="0" cellpadding="0" class="WaLayoutTable" style=""><tbody><tr data-componentid="KPZ7PGt_row" class="WaLayoutRow"><td id="id_P77qD2N" data-componentid="P77qD2N" class="WaLayoutItem" style="width:79%;"><div id="id_FZXAOyz" class="WaLayoutPlaceHolder placeHolderContainer" data-componentid="FZXAOyz" style=""><div style=""><div id="id_xbl156v" class="WaGadgetOnly WaGadgetContent  gadgetStyleNone" style="" data-componentid="xbl156v"><div class="gadgetStyleBody gadgetContentEditableArea" style="" data-editablearea="0" data-areaheight="auto">
+<p><font face="Helvetica" style="font-size: 16px;"><font color="#4B4B4B" style="caret-color: rgb(19, 81, 158);">ČAP sdružuje</font><font color="#4B4B4B">&nbsp;psychoterapeuty a psychoterapeutky, kteří splňují kritéria&nbsp;<a href="https://www.europsyche.org/training/" target="_blank">Evropské asociace pro psychoterapii</a>&nbsp;a jejich <strong>kvalifikace je ověřena</strong>.&nbsp;Stávající podmínky pro zapsání do adresáře jsou následující:</font><br></font></p>
+
+<ul style="line-height: 24px; font-family: Helvetica;">
+  <li>
+    <p><font face="Helvetica" color="#4B4B4B" style="font-size: 16px;"><span>Magisterský titul v relevantním univerzitním oboru.</span><br></font></p>
+  </li>
+
+  <li><font face="Helvetica" color="#4B4B4B" style="font-size: 16px;"><span>Komplexní psychoterapeutický výcvik (psychoterapeutický výcvik je pětileté postgraduální studium zakončené zkouškou).</span></font></li>
+
+  <li><font style="font-size: 16px;"><span><font face="Helvetica" color="#4B4B4B">Dodržování <a href="/resources/Documents/kl%c3%ad%c4%8dov%c3%a9%20dokumenty%20kodex%20a%20z%c3%a1sady/ETICKY_KODEX_C%cc%8cAP_tisk.pdf" target="_blank">etického kodexu</a> a standardů pro práci <a href="/resources/Documents/kl%c3%ad%c4%8dov%c3%a9%20dokumenty%20kodex%20a%20z%c3%a1sady/Evropsky_prychoterapeut_TISK.pdf" target="_blank">evropského psychoterapeuta</a>.</font></span><br></font></li>
+
+  <li><font color="#4B4B4B" style="font-size: 16px;"><span style="caret-color: rgb(75, 75, 75);">Pravidelné dokladování celoživotního profesního rozvoje a průběžná supervize vlastní praxe.&nbsp;</span></font></li>
+
+  <li><font color="#4B4B4B" face="Helvetica" style="font-size: 16px;"><span>Členství v odborné společnosti</span></font></li>
+</ul>
+
+<p style="margin-bottom: 0px !important;"><font style="font-size: 16px;">Členové naší asociace se mohou prokazovat odznakem, ze kterého je zřejmá jejich profesní zkušenost: kvalifikace v procesu -&nbsp;<strong>psychoterapeut*ka ve výcviku,&nbsp;</strong>plná kvalifikace -&nbsp;<strong>psychoterapeut*ka.</strong>&nbsp;&nbsp;</font></p>
+
+<p style="margin-bottom: 0px !important;"><font style="font-size: 16px;"><br></font></p>
+
+<p><font style="font-size: 16px;">Členství v ČAP si také můžete ověřit vyhledáním konkrétního jména v adresáři.</font></p></div>
+</div></div></div></td><td style="" data-componentid="P77qD2N_separator" class="WaLayoutSeparator"><div style="width: inherit;"></div></td><td id="id_aanhj3H" data-componentid="aanhj3H" class="WaLayoutItem" style="width:21%;"><div id="id_LIbCKVX" class="WaLayoutPlaceHolder placeHolderContainer" data-componentid="LIbCKVX" style=""><div style=""><div id="id_znMiTOY" class="WaGadgetFirst WaGadgetContent  gadgetStyleNone" style="" data-componentid="znMiTOY"><div class="gadgetStyleBody gadgetContentEditableArea" style="" data-editablearea="0" data-areaheight="auto">
+<p align="center"><img src="/resources/Pictures/Loga%20ke%20stahovani/Radny/CAP_odznak_radna_F_web.png" alt="" title="" border="0" width="135" height="135"><img src="/resources/Pictures/Loga%20ke%20stahovani/Kandidat/CAP_odznak_M_ve_vycviku_cernobily_web.png" alt="" title="" border="0" width="135" height="135"><br></p></div>
+</div><div id="id_Azs3lii" class="WaGadgetLast WaGadgetContent  gadgetStyleNone" style="" data-componentid="Azs3lii"><div class="gadgetStyleBody gadgetContentEditableArea" style="" data-editablearea="0" data-areaheight="auto">
+<p><font style="font-size: 14px;"><strong>Odznak je ochrannou známkou </strong>a jeho zneužití je trestné.</font><br></p></div>
+</div></div></div></td></tr></tbody></table> </div></div>
+</div></div>
+			</div>
+		</div>
+		<!-- /header zone -->
+
+<!-- content zone -->
+	<div class="zoneContentOuter zoneOuter">
+		<div class="zoneContent container_12">
+			<div class="zoneContentInner s1_grid_12 s2_grid_12 s3_grid_12 zoneInner zoneRoundedCorners">
+<div id="id_Content" data-componentid="Content" class="WaPlaceHolder WaPlaceHolderContent" style=""><div style=""><div id="id_tjxrGOE" class="WaGadgetFirst WaGadgetContent  gadgetStyleNone" style="" data-componentid="tjxrGOE"><div class="gadgetStyleBody gadgetContentEditableArea" style="" data-editablearea="0" data-areaheight="auto">
+<h3>Vyhledávání:</h3></div>
+</div><div id="id_4n7E97a" data-componentid="4n7E97a" class="WaLayoutContainerLast" style=""><table cellspacing="0" cellpadding="0" class="WaLayoutTable" style=""><tbody><tr data-componentid="4n7E97a_row" class="WaLayoutRow"><td id="id_VYqQkpp" data-componentid="VYqQkpp" class="WaLayoutItem" style="width:50%;"><div id="id_U1LH5fQ" class="WaLayoutPlaceHolder placeHolderContainer" data-componentid="U1LH5fQ" style=""><div style=""><div id="id_yeU99Ci" class="WaGadgetFirst WaGadgetContent  gadgetStyleNone" style="margin-top:0px;background-color:#E6E6E6;" data-componentid="yeU99Ci"><div class="gadgetStyleBody gadgetContentEditableArea" style="" data-editablearea="0" data-areaheight="auto">
+<p align="center" style="margin-top: 1em !important;"><font style="font-size: 16px;"><strong>Hledáte péči s příspěvkem od zdravotní pojišťovny?&nbsp;</strong><br></font></p><p align="center" style="margin-top: 1em !important;"><font style="font-size: 16px;">ČAP je partnerskou organizací zdravotních pojišťoven v preventivních programech péče o duševní zdraví.</font></p><p align="center" style="margin-top: 1em !important;"><font style="font-size: 16px;"></font><a href="/spoluprace-zp" class="stylizedButton buttonStyle001">Preventivní programy ZP</a></p><p align="center" style="margin-top: 1em !important;"><br></p></div>
+</div><div id="id_xSZiDQX" class="WaGadgetLast WaGadgetContent  gadgetStyleNone" style="background-color:#EEEEEE;" data-componentid="xSZiDQX"><div class="gadgetStyleBody gadgetContentEditableArea" style="" data-editablearea="0" data-areaheight="auto">
+<p align="center" style="margin-top: 1em !important;"><strong><font style="font-size: 16px;">Pro-bono podpora</font></strong></p><p align="center" style="margin-top: 1em !important;"><font style="font-size: 16px;">Mnoho našich členek a členů nabízí část svých služeb zdarma pro uživatele, kteří by si jinak psychoterapii nemohli dovolit.</font></p><p align="center"><a href="/Psychoterapie-zdarma" target="_blank" class="stylizedButton buttonStyle001">Pro-bono psychoterapie</a></p><p align="center"><br></p></div>
+</div></div></div></td><td style="" data-componentid="VYqQkpp_separator" class="WaLayoutSeparator"><div style="width: inherit;"></div></td><td id="id_vFitOFP" data-componentid="vFitOFP" class="WaLayoutItem" style="width:50%;"><div id="id_OFwthry" class="WaLayoutPlaceHolder placeHolderContainer" data-componentid="OFwthry" style=""><div style=""><div id="id_pTgUF2E" class="WaGadgetFirst WaGadgetContent  gadgetStyleNone" style="margin-left:10px;background-color:#EEEEEE;" data-componentid="pTgUF2E"><div class="gadgetStyleBody gadgetContentEditableArea" style="" data-editablearea="0" data-areaheight="auto">
+<p align="center" style="margin-top: 1em !important;"><span style="caret-color: rgb(75, 75, 75); font-family: Helvetica;"><strong><font style="font-size: 16px;">Foreign language speakers</font></strong></span></p><p align="center" style="margin-top: 1em !important;"><font style="font-size: 16px;"><span style="caret-color: rgb(75, 75, 75); color: rgb(75, 75, 75); font-family: Helvetica;">Are you looking for a </span><span style="caret-color: rgb(75, 75, 75); color: rgb(75, 75, 75);"><font face="Helvetica">qualified,&nbsp;</font></span><span style="">foreign language</span><span style="">&nbsp;speaking thera</span><span style="">pist</span><span style="caret-color: rgb(75, 75, 75); color: rgb(75, 75, 75); font-family: Helvetica;">? &nbsp;</span></font></p><p align="center"><span style="caret-color: rgb(75, 75, 75); color: rgb(75, 75, 75); font-family: Helvetica;"><font size="3">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</font></span><a href="/Foreign-therapists" target="_blank" class="stylizedButton buttonStyle001">FOREIGN LANGUAGE SPEAKING THERAPISTS</a></p><p align="center"><br></p></div>
+</div><div id="id_Cj7Kegc" class="WaGadgetLast WaGadgetContent  gadgetStyleNone" style="margin-left:10px;background-color:#EEEEEE;" data-componentid="Cj7Kegc"><div class="gadgetStyleBody gadgetContentEditableArea" style="" data-editablearea="0" data-areaheight="auto">
+<p align="center" style="margin-top: 1em !important;"><strong><font style="font-size: 16px;">Terapeutické skupiny</font></strong></p><p align="center" style="margin-top: 1em !important;"><font style="font-size: 16px;">Pracujeme na tvorbě celorepublikového seznamu terapeutických skupin, které nabírají nové klienty a jsou garantovány členy ČAP.</font></p><p align="center"><a href="/Skupiny" target="_blank" class="stylizedButton buttonStyle001">Terapeutické skupiny</a></p><p align="center"><br></p></div>
+</div></div></div></td></tr></tbody></table> </div></div>
+</div></div>
+		</div>
+	</div>
+	<!-- /content zone -->
+
+<!-- footer zone -->
+		<div class="zoneFooterOuter zoneOuter">
+			<div class="zoneFooter container_12">
+				<div class="zoneFooterInner zoneInner s1_grid_12 s2_grid_12 s3_grid_12 zoneRoundedCorners">
+<div id="id_Footer" data-componentid="Footer" class="WaPlaceHolder WaPlaceHolderFooter" style=""><div style=""><div id="id_KsTqHYp" class="WaGadgetOnly WaGadgetMemberDirectory  gadgetStyleNone WaGadgetMemberDirectoryStateList" style="" data-componentid="KsTqHYp">
+
+
+
+<form method="post" action="" id="form">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="wlypbvdl2pKbVBsZX+t9xpGGexOI9J78SXXcn/EAEqSlCknqyTHlhADa4u5qwjYLrJ+7WNLOY76kv6wlT7blJiUMKsrE8AfM6M1KApR45bCUN0pgrf6U95T5VRTgOIBn1jg+uOZITxnM1igYlr/HxPL6ua4unQq/YV4MlxH2dvWtw7KiYNsI7v/GF5lKHjD8WuCvdtt3CPeUlW5Mu4slwWDKvcz89clgfmOsxQB1bXotJHajfQpwoFS/drn/XiACR/zfdEJJAtdiaroEkUgAGz+jKo/ZWex+nL7h46knm9wa6FfQ">
+</div>
+
+    
+    <input type="hidden" name="FunctionalBlock1$contentModeHidden" id="FunctionalBlock1_contentModeHidden" value="1">
+<div id="FunctionalBlock1_ctl00_jsSupportedContainer" style="display: block;">
+	
+  
+    
+    <div id="FunctionalBlock1_ctl00_ctl00_browsingSection_browsingColumnsContainer" class="browsingColumnsMainContainer">
+		<div class="browsingColumnsOuterContainer"><div class="cornersContainer"><div class="topCorners"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div><div class="c5"></div><!--[if gt IE 6]><!--><div class="r1"><div class="r2"><div class="r3"><div class="r4"><div class="r5"></div></div></div></div></div><!--<![endif]--></div></div><div id="idFilterColumns" class="browsingColumnsInnerContainer"><div class="d1"><div class="d2"><div class="d3"><div class="d4"><div class="d5"><div class="d6"><div class="d7"><div class="d8"><div class="d9"><div class="inner">
+  <table class="browsingColumns" cellpadding="0" cellspacing="0" border="0">
+    <tbody><tr class="filterHead">
+      
+<th id="idF1Head" class="f1Head">
+  Zaměření psychoterapie
+</th>
+      
+<th id="idF2Head" class="f2Head">
+  Cílová skupina
+</th>
+      
+<th id="idF3Head" class="f3Head">
+  Jakým způsobem poskytujete služby?
+</th>
+      
+<th id="idF4Head" class="f4Head">
+  Adresa pracoviště: Kraj
+</th>
+    </tr>
+    <tr class="filterRow">
+      
+<td id="idF1Row">
+   <div id="idF1Options" class="filterOptions">
+   
+     
+         <ul class="filterList">
+       
+         <li>
+           <a class="optionLink" href="#" fid="14547501"><nobr>Individuální <span class="optionCounter">(2309)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="14547502"><nobr>Párová <span class="optionCounter">(838)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="14547503"><nobr>Rodinná <span class="optionCounter">(627)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="14547505"><nobr>Skupinová <span class="optionCounter">(715)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="20591326">Krizová <nobr>intervence <span class="optionCounter">(352)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="22463731">VT - vývojové <nobr>trauma <span class="optionCounter">(107)</span></nobr></a>
+         </li>
+       
+         </ul>
+       
+   
+   </div>
+   <div id="idF1Selected" class="selectedFilter">
+      <div id="idF1SelName" class="selectedName"></div>
+      <a id="idF1Change" class="changeValue" href="#">
+        Change
+      </a>
+    </div>
+ </td>
+
+      
+<td id="idF2Row">
+   <div id="idF2Options" class="filterOptions">
+   
+     
+         <ul class="filterList">
+       
+         <li>
+           <a class="optionLink" href="#" fid="21230262">Dospělí <nobr>18-69 <span class="optionCounter">(1888)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="21230263">Dospívající (do 17 <nobr>let) <span class="optionCounter">(1036)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="21230264">Děti: druhý stupeň <nobr>ZŠ <span class="optionCounter">(567)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="21230265">Děti: první stupeň <nobr>ZŠ <span class="optionCounter">(392)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="21230266">Dospělí: <nobr>70+ <span class="optionCounter">(541)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="21230267">Děti: <nobr>předškoláci <span class="optionCounter">(240)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="21230268"><nobr>neuvedeno <span class="optionCounter">(316)</span></nobr></a>
+         </li>
+       
+         </ul>
+       
+   
+   </div>
+   <div id="idF2Selected" class="selectedFilter">
+      <div id="idF2SelName" class="selectedName"></div>
+      <a id="idF2Change" class="changeValue" href="#">
+        Change
+      </a>
+    </div>
+ </td>
+
+      
+<td id="idF3Row">
+   <div id="idF3Options" class="filterOptions">
+   
+     
+         <ul class="filterList">
+       
+         <li>
+           <a class="optionLink" href="#" fid="19050774"><nobr>Osobně <span class="optionCounter">(2296)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="19050775"><nobr>On-line <span class="optionCounter">(1883)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="19050776"><nobr>Telefonicky <span class="optionCounter">(507)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="20843088">Možnost terapie <nobr>venku <span class="optionCounter">(475)</span></nobr></a>
+         </li>
+       
+         </ul>
+       
+   
+   </div>
+   <div id="idF3Selected" class="selectedFilter">
+      <div id="idF3SelName" class="selectedName"></div>
+      <a id="idF3Change" class="changeValue" href="#">
+        Change
+      </a>
+    </div>
+ </td>
+
+      
+<td id="idF4Row">
+   <div id="idF4Options" class="filterOptions">
+   
+     
+         <ul class="filterList">
+       
+         <li>
+           <a class="optionLink" href="#" fid="14547509">Hlavní město <nobr>Praha <span class="optionCounter">(1188)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="14547510">Středočeský <nobr>kraj <span class="optionCounter">(210)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="14547511">Jihočeský <nobr>kraj <span class="optionCounter">(115)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="14547512">Plzeňský <nobr>kraj <span class="optionCounter">(72)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="14547513">Karlovarský <nobr>kraj <span class="optionCounter">(13)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="14547514">Ústecký <nobr>kraj <span class="optionCounter">(70)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="14547515">Liberecký <nobr>kraj <span class="optionCounter">(62)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="14547516">Královéhradecký <nobr>kraj <span class="optionCounter">(103)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="14547517">Pardubický <nobr>kraj <span class="optionCounter">(76)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="14547518">Kraj <nobr>Vysočina <span class="optionCounter">(57)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="14547519">Jihomoravský <nobr>kraj <span class="optionCounter">(317)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="14547520">Olomoucký <nobr>kraj <span class="optionCounter">(100)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="14547521">Zlínský <nobr>kraj <span class="optionCounter">(56)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="14547522">Moravskoslezský <nobr>kraj <span class="optionCounter">(167)</span></nobr></a>
+         </li>
+       
+         <li>
+           <a class="optionLink" href="#" fid="21319412"><nobr>Neuvedeno <span class="optionCounter">(17)</span></nobr></a>
+         </li>
+       
+         </ul>
+       
+   
+   </div>
+   <div id="idF4Selected" class="selectedFilter">
+      <div id="idF4SelName" class="selectedName"></div>
+      <a id="idF4Change" class="changeValue" href="#">
+        Change
+      </a>
+    </div>
+ </td>
+
+    </tr>
+  </tbody></table>
+<div class="clearEndContainer"></div></div></div></div></div></div></div></div></div></div></div></div><div class="cornersContainer"><div class="bottomCorners"><!--[if gt IE 6]><!--><div class="r1"><div class="r2"><div class="r3"><div class="r4"><div class="r5"></div></div></div></div></div><!--<![endif]--><div class="c5"></div><div class="c4"></div><div class="c3"></div><div class="c2"></div><div class="c1"></div></div></div></div>
+	</div>
+    
+    
+
+    <div class="memberDirectorySearchAreaOuterContainer" id="memberDirectorySearchArea"><div class="cornersContainer"><div class="topCorners"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div><div class="c5"></div><!--[if gt IE 6]><!--><div class="r1"><div class="r2"><div class="r3"><div class="r4"><div class="r5"></div></div></div></div></div><!--<![endif]--></div></div><div class="memberDirectorySearchArea"><div class="d1"><div class="d2"><div class="d3"><div class="d4"><div class="d5"><div class="d6"><div class="d7"><div class="d8"><div class="d9"><div class="inner">
+      
+        <label for="FunctionalBlock1_ctl00_ctl00_search" id="FunctionalBlock1_ctl00_ctl00_searchLabel">Hledat:</label>
+        <input name="FunctionalBlock1$ctl00$ctl00$search" type="text" maxlength="100" id="FunctionalBlock1_ctl00_ctl00_search">
+        <span class="searchResult">
+          Nalezeno:&nbsp;
+          <em id="membersFound" style="display: inline;">2670</em><span id="idWaitMessages" style="display: none;">undefined</span><a id="idReloadData" style="display: none;"><img id="FunctionalBlock1_ctl00_ctl00_refreshImage" title="Current search is cached. Click to refresh data" src="/Admin/html_res/images/refresh-icon3.gif" alt="Refresh cached search"></a>
+          <span id="idPagingData" style="display: inline;">Show:<select onchange="MemberDirectoryListRenderer.pagerChanged(this);"><option value="0">1-50</option><option value="50">51-100</option><option value="100">101-150</option><option value="150">151-200</option><option value="200">201-250</option><option value="250">251-300</option><option value="300">301-350</option><option value="350">351-400</option><option value="400">401-450</option><option value="450">451-500</option><option value="500">501-550</option><option value="550">551-600</option><option value="600">601-650</option><option value="650">651-700</option><option value="700">701-750</option><option value="750">751-800</option><option value="800">801-850</option><option value="850">851-900</option><option value="900">901-950</option><option value="950">951-1000</option><option value="1000">1001-1050</option><option value="1050">1051-1100</option><option value="1100">1101-1150</option><option value="1150">1151-1200</option><option value="1200">1201-1250</option><option value="1250">1251-1300</option><option value="1300">1301-1350</option><option value="1350">1351-1400</option><option value="1400">1401-1450</option><option value="1450">1451-1500</option><option value="1500">1501-1550</option><option value="1550">1551-1600</option><option value="1600">1601-1650</option><option value="1650">1651-1700</option><option value="1700">1701-1750</option><option value="1750">1751-1800</option><option value="1800">1801-1850</option><option value="1850">1851-1900</option><option value="1900">1901-1950</option><option value="1950">1951-2000</option><option value="2000">2001-2050</option><option value="2050">2051-2100</option><option value="2100">2101-2150</option><option value="2150">2151-2200</option><option value="2200">2201-2250</option><option value="2250">2251-2300</option><option value="2300">2301-2350</option><option value="2350">2351-2400</option><option value="2400">2401-2450</option><option value="2450">2451-2500</option><option value="2500">2501-2550</option><option value="2550">2551-2600</option><option value="2600">2601-2650</option><option value="2650">2651-2670</option></select></span>
+        </span>
+        
+      <div class="clearEndContainer"></div></div></div></div></div></div></div></div></div></div></div></div><div class="cornersContainer"><div class="bottomCorners"><!--[if gt IE 6]><!--><div class="r1"><div class="r2"><div class="r3"><div class="r4"><div class="r5"></div></div></div></div></div><!--<![endif]--><div class="c5"></div><div class="c4"></div><div class="c3"></div><div class="c2"></div><div class="c1"></div></div></div></div>
+  
+    <div class="memberDirectoryOuterContainer" id="idMemberDirectoryContainer"><div class="cornersContainer"><div class="topCorners"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div><div class="c5"></div><!--[if gt IE 6]><!--><div class="r1"><div class="r2"><div class="r3"><div class="r4"><div class="r5"></div></div></div></div></div><!--<![endif]--></div></div><div class="memberDirectoryContainer"><div class="d1"><div class="d2"><div class="d3"><div class="d4"><div class="d5"><div class="d6"><div class="d7"><div class="d8"><div class="d9"><div class="inner">
+      
+        <div id="FunctionalBlock1_ctl00_ctl00_memberDirectory" class="memberDirectory"><table id="membersTable" class="membersTable" cellspacing="0"><thead><tr><th width="25%">Psychoterapeut/ka</th><th width="25%">Kontakt</th><th width="25%">Dostupnost</th><th width="25%"> </th></tr></thead><tbody><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/79802996/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/79802996/7053044">Gianotti, Federica</a></h5></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Prague</div><div class="memberValue"><a onclick="window.open('https://federica-gianotti-psicoterapeuta.com/');BonaPage.stopEvent(event);" href="https://federica-gianotti-psicoterapeuta.com/" target="_blank">https://federica-gianotti-psicoterapeuta.com/</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Dospělí 18-69, neuvedeno</div><div class="memberValue">On-line, Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/79802996')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Hlubinná psychoterapie (např. psychodynamické směry, psychoanalýza, SUR aj.)</div></div></td></tr><tr class="hover" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/63843964/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)" style="border-bottom-color: transparent;"><td class="memberDirectoryColumn1" width="25%" style="border-bottom-color: transparent;"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/63843964/7053044">Baloun, Ingrid</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=63843964&amp;id=-2135789092&amp;t=1778830608239"></div></td><td class="memberDirectoryColumn2" width="25%" style="border-bottom-color: transparent;"><div class="memberValue">Soběslav</div><div class="memberValue"><a onclick="window.open('https://terapiesobeslav.cz/');BonaPage.stopEvent(event);" href="https://terapiesobeslav.cz/" target="_blank">https://terapiesobeslav.cz/</a></div></td><td class="memberDirectoryColumn3" width="25%" style="border-bottom-color: transparent;"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Děti: druhý stupeň ZŠ, Děti: první stupeň ZŠ, Dospělí 18-69, Dospělí: 70+, Dospívající (do 17 let)</div><div class="memberValue">Možnost terapie venku, On-line, Osobně, Telefonicky</div></td><td class="memberDirectoryColumn4" width="25%" style="border-bottom-color: transparent;"></td></tr><tr class="hover" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/63843964')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)" style="border-top-color: transparent;"><td class="memberDirectoryBottomRow" colspan="4" style="border-top-color: transparent;"><div class="mainDiv"><div class="memberValue">Systémové, systemické a komunikační pojetí</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/58885074/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)" style="border-bottom-color: transparent;"><td class="memberDirectoryColumn1" width="25%" style="border-bottom-color: transparent;"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/58885074/7053044">Škvareková, Slávka</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=58885074&amp;id=1753992789&amp;t=1778830608239"></div></td><td class="memberDirectoryColumn2" width="25%" style="border-bottom-color: transparent;"><div class="memberValue">Praha 2</div><div class="memberValue"><a onclick="window.open('http://www.slavkaskvarekova.cz');BonaPage.stopEvent(event);" href="http://www.slavkaskvarekova.cz" target="_blank">www.slavkaskvarekova.cz</a></div></td><td class="memberDirectoryColumn3" width="25%" style="border-bottom-color: transparent;"><div class="memberValue">Info o dostupnosti na vyžádání</div><div class="memberValue">Dospělí 18-69, Dospívající (do 17 let)</div><div class="memberValue">On-line, Osobně, Telefonicky</div></td><td class="memberDirectoryColumn4" width="25%" style="border-bottom-color: transparent;"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/58885074')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)" style="border-top-color: transparent;"><td class="memberDirectoryBottomRow" colspan="4" style="border-top-color: transparent;"><div class="mainDiv"><div class="memberValue">Humanistická psychoterapie (např. PCA, Rogers, Daseins, Gestalt, logoterapie aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/62202064/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/62202064/7053044">Pöslová, Blanka</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=62202064&amp;id=1892194503&amp;t=1778830608239"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Pardubice</div><div class="memberValue"><a onclick="window.open('http://www.psychocom.cz');BonaPage.stopEvent(event);" href="http://www.psychocom.cz" target="_blank">www.psychocom.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Info o dostupnosti na vyžádání</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/62202064')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Systémové, systemické a komunikační pojetí</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/95446138/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/95446138/7053044">Dohnalová, Hana</a></h5></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Jindřichův Hradec</div><div class="memberValue">Neuvedeno</div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Dospělí 18-69, neuvedeno</div><div class="memberValue">On-line</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/95446138')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Hlubinná psychoterapie (např. psychodynamické směry, psychoanalýza, SUR aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/67722622/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)" style="border-bottom-color: transparent;"><td class="memberDirectoryColumn1" width="25%" style="border-bottom-color: transparent;"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/67722622/7053044">Tesárková, Tea</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=67722622&amp;id=2098460104&amp;t=1778830608239"></div></td><td class="memberDirectoryColumn2" width="25%" style="border-bottom-color: transparent;"><div class="memberValue">Praha 2</div><div class="memberValue"><a onclick="window.open('http://www.teaterapie.cz');BonaPage.stopEvent(event);" href="http://www.teaterapie.cz" target="_blank">www.teaterapie.cz</a></div></td><td class="memberDirectoryColumn3" width="25%" style="border-bottom-color: transparent;"><div class="memberValue">Info o dostupnosti na vyžádání</div><div class="memberValue">Dospělí 18-69</div><div class="memberValue">On-line, Osobně</div></td><td class="memberDirectoryColumn4" width="25%" style="border-bottom-color: transparent;"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/67722622')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)" style="border-top-color: transparent;"><td class="memberDirectoryBottomRow" colspan="4" style="border-top-color: transparent;"><div class="mainDiv"><div class="memberValue">Humanistická psychoterapie (např. PCA, Rogers, Daseins, Gestalt, logoterapie aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/76951201/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/76951201/7053044">Sauerová, Adéla</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=76951201&amp;id=-1841381809&amp;t=1778830608239"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Praha 1</div><div class="memberValue"><a onclick="window.open('http://www.bezpecnaterapie.cz');BonaPage.stopEvent(event);" href="http://www.bezpecnaterapie.cz" target="_blank">http://www.bezpecnaterapie.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Dospělí 18-69, neuvedeno</div><div class="memberValue">Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/76951201')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Humanistická psychoterapie (např. PCA, Rogers, Daseins, Gestalt, logoterapie aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/76932861/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/76932861/7053044">Faltová, Olga</a></h5></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">České Budějovice</div><div class="memberValue"><a onclick="window.open('http://www.psycholog-cbudejovice.cz');BonaPage.stopEvent(event);" href="http://www.psycholog-cbudejovice.cz" target="_blank">www.psycholog-cbudejovice.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Dospělí 18-69</div><div class="memberValue">Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/76932861')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Humanistická psychoterapie (např. PCA, Rogers, Daseins, Gestalt, logoterapie aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/58885037/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/58885037/7053044">Lipková, Michaela</a></h5></div></td><td class="memberDirectoryColumn2" width="25%"></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Info o dostupnosti na vyžádání</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/58885037')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Psychoterapie zaměřená na tělo</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/80897801/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/80897801/7053044">Krasulová, Andrea</a></h5></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Plzeň</div><div class="memberValue"><a onclick="window.open('http://www.systemickaterapie.com');BonaPage.stopEvent(event);" href="http://www.systemickaterapie.com" target="_blank">www.systemickaterapie.com</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Dospělí 18-69</div><div class="memberValue">On-line, Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/80897801')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Systémové, systemické a komunikační pojetí</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/58884940/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/58884940/7053044">Friedrichová, Jindra</a></h5></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Jablonec nad Nisou</div><div class="memberValue"><a onclick="window.open('http://www.mudrjindrafriedrichova.webnode.cz');BonaPage.stopEvent(event);" href="http://www.mudrjindrafriedrichova.webnode.cz" target="_blank">www.mudrjindrafriedrichova.webnode.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Info o dostupnosti na vyžádání</div><div class="memberValue">Dospělí 18-69</div><div class="memberValue">Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/58884940')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Hlubinná psychoterapie (např. psychodynamické směry, psychoanalýza, SUR aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/63239410/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/63239410/7053044">Kracík, Martin</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=63239410&amp;id=1934345971&amp;t=1778830608239"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Železnice</div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">On-line, Osobně, Telefonicky</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/63239410')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Systémové, systemické a komunikační pojetí</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/62128072/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/62128072/7053044">Mendreková, Silvie</a></h5></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Třinec</div><div class="memberValue">htps/www.terapiesouzneni.cz</div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Děti: druhý stupeň ZŠ, Dospělí 18-69, Dospívající (do 17 let)</div><div class="memberValue">On-line, Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/62128072')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Systémové, systemické a komunikační pojetí</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/62731587/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/62731587/7053044">Kyšková, Marie</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=62731587&amp;id=1914270720&amp;t=1778830608239"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Ostrava</div><div class="memberValue"><a onclick="window.open('http://www.mariekyskova.cz');BonaPage.stopEvent(event);" href="http://www.mariekyskova.cz" target="_blank">www.mariekyskova.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Děti: druhý stupeň ZŠ, Děti: první stupeň ZŠ, Dospělí 18-69, Dospívající (do 17 let)</div><div class="memberValue">On-line, Osobně, Telefonicky</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/62731587')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Systémové, systemické a komunikační pojetí</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/60377408/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/60377408/7053044">Haasová, ilona</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=60377408&amp;id=1811918648&amp;t=1778830608239"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Praha 6</div><div class="memberValue"><a onclick="window.open('http://www.psycholog-haasová.cz,');BonaPage.stopEvent(event);" href="http://www.psycholog-haasová.cz," target="_blank">www.psycholog-haasová.cz,</a> <a onclick="window.open('http://www.ineopsychoterapie.cz');BonaPage.stopEvent(event);" href="http://www.ineopsychoterapie.cz" target="_blank">www.ineopsychoterapie.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Dospělí 18-69, Dospívající (do 17 let)</div><div class="memberValue">On-line, Osobně, Telefonicky</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/60377408')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Humanistická psychoterapie (např. PCA, Rogers, Daseins, Gestalt, logoterapie aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/78360253/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/78360253/7053044">Demeterová, Pavla</a></h5></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Kopřivnice</div><div class="memberValue"><a onclick="window.open('https://www.terapiepade.cz');BonaPage.stopEvent(event);" href="https://www.terapiepade.cz" target="_blank">https://www.terapiepade.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Info o dostupnosti na vyžádání</div><div class="memberValue">Dospělí 18-69, Dospělí: 70+, neuvedeno</div><div class="memberValue">Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/78360253')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Integrativní a eklektické pojetí</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/95371604/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/95371604/7053044">Giunta, Veronika</a></h5></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Praha 10</div><div class="memberValue">neuvedeno</div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">neuvedeno</div><div class="memberValue">On-line, Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/95371604')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Hlubinná psychoterapie (např. psychodynamické směry, psychoanalýza, SUR aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/79411472/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/79411472/7053044">Macková, Jana</a></h5></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Hradec Králové</div><div class="memberValue"><a onclick="window.open('http://www.mackovajana.cz');BonaPage.stopEvent(event);" href="http://www.mackovajana.cz" target="_blank">www.mackovajana.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Děti: druhý stupeň ZŠ, Děti: předškoláci, Děti: první stupeň ZŠ, Dospívající (do 17 let)</div><div class="memberValue">Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/79411472')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Integrativní a eklektické pojetí</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/94321845/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/94321845/7053044">Brychtová, Ivana</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=94321845&amp;id=-1546625226&amp;t=1778830608239"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Ústí nad Labem</div><div class="memberValue"><a onclick="window.open('https://www.ivanabrychtova.cz/');BonaPage.stopEvent(event);" href="https://www.ivanabrychtova.cz/" target="_blank">https://www.ivanabrychtova.cz/</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Dospělí 18-69, Dospělí: 70+, Dospívající (do 17 let), neuvedeno</div><div class="memberValue">Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/94321845')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Systémové, systemické a komunikační pojetí</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/58885206/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/58885206/7053044">Medenčevič, Jasenica</a></h5></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Praha 2</div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Info o dostupnosti na vyžádání</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/58885206')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Humanistická psychoterapie (např. PCA, Rogers, Daseins, Gestalt, logoterapie aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/69738231/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/69738231/7053044">Kovářová, Ivana</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=69738231&amp;id=-2081705482&amp;t=1778830608239"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Plzeň</div><div class="memberValue"><a onclick="window.open('http://www.psychoterapie-ivana.cz');BonaPage.stopEvent(event);" href="http://www.psychoterapie-ivana.cz" target="_blank">www.psychoterapie-ivana.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Děti: druhý stupeň ZŠ, Dospělí 18-69, Dospívající (do 17 let), neuvedeno</div><div class="memberValue">On-line, Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/69738231')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Hlubinná psychoterapie (např. psychodynamické směry, psychoanalýza, SUR aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/78061830/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/78061830/7053044">Zavadilová, Karolína</a></h5></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Hradec Králové</div><div class="memberValue">neuvedeno</div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Info o dostupnosti na vyžádání</div><div class="memberValue">Dospělí 18-69, Dospívající (do 17 let), neuvedeno</div><div class="memberValue">On-line, Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/78061830')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Humanistická psychoterapie (např. PCA, Rogers, Daseins, Gestalt, logoterapie aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/58884968/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/58884968/7053044">Raszka, Michal</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=58884968&amp;id=1753986341&amp;t=1778830608239"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Frýdek-Místek</div><div class="memberValue"><a onclick="window.open('http://www.michalraszka.cz');BonaPage.stopEvent(event);" href="http://www.michalraszka.cz" target="_blank">www.michalraszka.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Nepřijímám nové klienty</div><div class="memberValue">Dospělí 18-69</div><div class="memberValue">Možnost terapie venku, On-line, Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/58884968')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Hlubinná psychoterapie (např. psychodynamické směry, psychoanalýza, SUR aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/78161280/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/78161280/7053044">Voskovcová - Vaksmanová, Radka</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=78161280&amp;id=-1790129431&amp;t=1778830608239"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Praha 1</div><div class="memberValue"><a onclick="window.open('http://www.radkavoskovcova.cz');BonaPage.stopEvent(event);" href="http://www.radkavoskovcova.cz" target="_blank">www.radkavoskovcova.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Info o dostupnosti na vyžádání</div><div class="memberValue">Dospělí 18-69, neuvedeno</div><div class="memberValue">On-line, Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/78161280')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Integrativní a eklektické pojetí</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/58885061/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/58885061/7053044">Králíčková, Tereza</a></h5></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Praha 2</div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Info o dostupnosti na vyžádání</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/58885061')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Humanistická psychoterapie (např. PCA, Rogers, Daseins, Gestalt, logoterapie aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/90476384/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/90476384/7053044">Gavlas, René</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=90476384&amp;id=-1606141319&amp;t=1778830608239"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Frýdek-Místek</div><div class="memberValue"><a onclick="window.open('http://www.gavlasovi.cz');BonaPage.stopEvent(event);" href="http://www.gavlasovi.cz" target="_blank">www.gavlasovi.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Info o dostupnosti na vyžádání</div><div class="memberValue">Děti: druhý stupeň ZŠ, Děti: předškoláci, Děti: první stupeň ZŠ, Dospělí 18-69, Dospívající (do 17 let)</div><div class="memberValue">Možnost terapie venku, On-line, Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/90476384')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Integrativní a eklektické pojetí</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/58884990/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/58884990/7053044">Doležalová, Adéla</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=58884990&amp;id=1753996798&amp;t=1778830608239"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Strakonice</div><div class="memberValue"><a onclick="window.open('http://www.ops-poradnastrakonice.cz');BonaPage.stopEvent(event);" href="http://www.ops-poradnastrakonice.cz" target="_blank">www.ops-poradnastrakonice.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Info o dostupnosti na vyžádání</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/58884990')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Systémové, systemické a komunikační pojetí</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/62676284/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/62676284/7053044">Brožková, Lenka</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=62676284&amp;id=1912136545&amp;t=1778830608239"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Praha 1</div><div class="memberValue"><a onclick="window.open('http://lenka.brozek.org/');BonaPage.stopEvent(event);" href="http://lenka.brozek.org/" target="_blank">http://lenka.brozek.org/</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Děti: druhý stupeň ZŠ, Děti: předškoláci, Děti: první stupeň ZŠ, Dospělí 18-69, Dospívající (do 17 let)</div><div class="memberValue">On-line, Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/62676284')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Integrativní a eklektické pojetí</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/86160043/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/86160043/7053044">Prášilová, Michaela</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=86160043&amp;id=-1661397154&amp;t=1778830608239"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Český Krumlov</div><div class="memberValue">neuvedeno</div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Dospělí 18-69, Dospělí: 70+, Dospívající (do 17 let)</div><div class="memberValue">Možnost terapie venku, On-line, Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/86160043')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Humanistická psychoterapie (např. PCA, Rogers, Daseins, Gestalt, logoterapie aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/59120039/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/59120039/7053044">Danešová, Miluše</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=59120039&amp;id=1762864399&amp;t=1778830608240"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Litvínov</div><div class="memberValue"><a onclick="window.open('https://www.ipsp.cz/miluse-danesova');BonaPage.stopEvent(event);" href="https://www.ipsp.cz/miluse-danesova" target="_blank">https://www.ipsp.cz/miluse-danesova</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Dospělí 18-69, Dospívající (do 17 let)</div><div class="memberValue">On-line, Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/59120039')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Humanistická psychoterapie (např. PCA, Rogers, Daseins, Gestalt, logoterapie aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/59711023/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/59711023/7053044">Brázda, Jan</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=59711023&amp;id=1783742947&amp;t=1778830608240"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Praha 1</div><div class="memberValue"><a onclick="window.open('http://www.poradnapsychoterapie.cz');BonaPage.stopEvent(event);" href="http://www.poradnapsychoterapie.cz" target="_blank">www.poradnapsychoterapie.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">On-line, Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/59711023')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Humanistická psychoterapie (např. PCA, Rogers, Daseins, Gestalt, logoterapie aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/63548510/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/63548510/7053044">Šeniglová, Kristýna</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=63548510&amp;id=-1674639496&amp;t=1778830608240"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Unhošť</div><div class="memberValue"><a onclick="window.open('https://psychoterapie-kladno.cz');BonaPage.stopEvent(event);" href="https://psychoterapie-kladno.cz" target="_blank">https://psychoterapie-kladno.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Info o dostupnosti na vyžádání</div><div class="memberValue">neuvedeno</div><div class="memberValue">On-line, Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/63548510')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Integrativní a eklektické pojetí</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/82811558/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/82811558/7053044">Bílková, Zuzana</a></h5></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Praha 4</div><div class="memberValue">Neuvedeno</div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Info o dostupnosti na vyžádání</div><div class="memberValue">Děti: druhý stupeň ZŠ, Děti: první stupeň ZŠ, Dospělí 18-69</div><div class="memberValue">On-line, Osobně, Telefonicky</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/82811558')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Systémové, systemické a komunikační pojetí</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/96606806/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/96606806/7053044">Šmilauer, Václav</a></h5></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Praha 1</div><div class="memberValue">lessstress.cz</div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Dospělí 18-69, Dospělí: 70+</div><div class="memberValue">On-line, Osobně, Telefonicky</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/96606806')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Humanistická psychoterapie (např. PCA, Rogers, Daseins, Gestalt, logoterapie aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/58885275/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/58885275/7053044">Frouzová, Magdalena</a></h5></div></td><td class="memberDirectoryColumn2" width="25%"></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Info o dostupnosti na vyžádání</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/58885275')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Hlubinná psychoterapie (např. psychodynamické směry, psychoanalýza, SUR aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/84886785/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/84886785/7053044">Nováková, Monika</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=84886785&amp;id=-1678154479&amp;t=1778830608240"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Frýdek-Místek</div><div class="memberValue"><a onclick="window.open('https://www.novakovamonika.cz/');BonaPage.stopEvent(event);" href="https://www.novakovamonika.cz/" target="_blank">https://www.novakovamonika.cz/</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Dospělí 18-69, Dospělí: 70+</div><div class="memberValue">Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/84886785')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Psychoterapie zaměřená na tělo</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/79106070/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/79106070/7053044">Lodrová, Kristýna</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=79106070&amp;id=-1488654836&amp;t=1778830608240"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Beroun</div><div class="memberValue"><a onclick="window.open('http://www.cpspsk.cz');BonaPage.stopEvent(event);" href="http://www.cpspsk.cz" target="_blank">www.cpspsk.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Děti: druhý stupeň ZŠ, Dospělí 18-69, Dospělí: 70+, Dospívající (do 17 let)</div><div class="memberValue">Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/79106070')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Systémové, systemické a komunikační pojetí</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/69267272/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/69267272/7053044">Urbášková, Hana</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=69267272&amp;id=-2103695604&amp;t=1778830608240"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Praha 1</div><div class="memberValue"><a onclick="window.open('http://www.psychoterapie-urbaskova.cz');BonaPage.stopEvent(event);" href="http://www.psychoterapie-urbaskova.cz" target="_blank">www.psychoterapie-urbaskova.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/69267272')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Hlubinná psychoterapie (např. psychodynamické směry, psychoanalýza, SUR aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/64420595/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/64420595/7053044">Divíšková, Petra</a></h5></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Libchavy</div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Info o dostupnosti na vyžádání</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/64420595')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Systémové, systemické a komunikační pojetí</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/94191084/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/94191084/7053044">Urbancová, Alice</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=94191084&amp;id=-1550859843&amp;t=1778830608240"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Praha 8-Karlín</div><div class="memberValue"><a onclick="window.open('https://poradnaalice6.webnode.cz/');BonaPage.stopEvent(event);" href="https://poradnaalice6.webnode.cz/" target="_blank">https://poradnaalice6.webnode.cz/</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Dospělí 18-69, Dospívající (do 17 let)</div><div class="memberValue">On-line, Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/94191084')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Hlubinná psychoterapie (např. psychodynamické směry, psychoanalýza, SUR aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/75163258/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/75163258/7053044">Malinová, Andrea</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=75163258&amp;id=-1759905774&amp;t=1778830608240"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Mělník</div><div class="memberValue">neuvedeno</div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Dospělí 18-69</div><div class="memberValue">Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/75163258')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Humanistická psychoterapie (např. PCA, Rogers, Daseins, Gestalt, logoterapie aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/58885358/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/58885358/7053044">Glancová, Vendula</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=58885358&amp;id=1753989569&amp;t=1778830608240"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Praha 7</div><div class="memberValue"><a onclick="window.open('http://www.glancporadenstvi.cz');BonaPage.stopEvent(event);" href="http://www.glancporadenstvi.cz" target="_blank">www.glancporadenstvi.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/58885358')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Humanistická psychoterapie (např. PCA, Rogers, Daseins, Gestalt, logoterapie aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/61632540/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/61632540/7053044">Jandová, Regina</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=61632540&amp;id=1867784028&amp;t=1778830608240"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Praha</div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Nepřijímám nové klienty</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/61632540')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Kognitivně-behaviorální terapie</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/63383681/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/63383681/7053044">Opletalová, Pavlína</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=63383681&amp;id=1940662267&amp;t=1778830608240"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Světlá Hora</div><div class="memberValue"><a onclick="window.open('http://www.pastorbonus.cz');BonaPage.stopEvent(event);" href="http://www.pastorbonus.cz" target="_blank">www.pastorbonus.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Děti: druhý stupeň ZŠ, Děti: předškoláci, Děti: první stupeň ZŠ, Dospělí 18-69, Dospívající (do 17 let)</div><div class="memberValue">On-line, Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/63383681')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Hlubinná psychoterapie (např. psychodynamické směry, psychoanalýza, SUR aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/68296928/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/68296928/7053044">Platt, Kateřina</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=68296928&amp;id=2126138293&amp;t=1778830608240"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Praha 2</div><div class="memberValue"><a onclick="window.open('http://www.platt.cz');BonaPage.stopEvent(event);" href="http://www.platt.cz" target="_blank">www.platt.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Dospělí 18-69, Dospívající (do 17 let)</div><div class="memberValue">On-line, Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/68296928')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Hlubinná psychoterapie (např. psychodynamické směry, psychoanalýza, SUR aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/97257169/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/97257169/7053044">Vasilieva, Daria</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=97257169&amp;id=-1437324334&amp;t=1778830608240"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Praha 1</div><div class="memberValue">neuvedeno</div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Děti: druhý stupeň ZŠ, Děti: první stupeň ZŠ, Dospělí 18-69, Dospělí: 70+, Dospívající (do 17 let)</div><div class="memberValue">Možnost terapie venku, On-line, Osobně, Telefonicky</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/97257169')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Humanistická psychoterapie (např. PCA, Rogers, Daseins, Gestalt, logoterapie aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/58885131/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/58885131/7053044">Machan, Richard</a></h5></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Praha 6</div><div class="memberValue">terapie-machan.cz</div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Info o dostupnosti na vyžádání</div><div class="memberValue">On-line, Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/58885131')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Humanistická psychoterapie (např. PCA, Rogers, Daseins, Gestalt, logoterapie aj.)</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/87172200/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/87172200/7053044">Svojítková, Lucie</a></h5></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Praha 5</div><div class="memberValue">Neuvedeno</div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">neuvedeno</div><div class="memberValue">On-line, Osobně</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/87172200')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Systémové, systemické a komunikační pojetí</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/75637276/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/75637276/7053044">Svoboda, Zdeněk</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=75637276&amp;id=-1885620134&amp;t=1778830608240"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">České Budějovice</div><div class="memberValue"><a onclick="window.open('http://www.terapiesvoboda.cz');BonaPage.stopEvent(event);" href="http://www.terapiesvoboda.cz" target="_blank">www.terapiesvoboda.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Dospělí 18-69</div><div class="memberValue">On-line</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/75637276')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Integrativní a eklektické pojetí</div></div></td></tr><tr class="normal" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/76243700/7053044')" onmouseover="MemberDirectoryListRenderer.highlightRowAndNext(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndNext(this)"><td class="memberDirectoryColumn1" width="25%"><div class="memberValue"><h5><a title="Go to member details" onclick="globalUtils.stopEventPropogation(event)" href="https://www.czap.cz/Sys/PublicProfile/76243700/7053044">Pechová, Dagmar</a></h5></div><div class="memberValue"><img src="/Content/Pictures/UserPicture.ashx?memberId=76243700&amp;id=-1869601206&amp;t=1778830608240"></div></td><td class="memberDirectoryColumn2" width="25%"><div class="memberValue">Praha 5, Smíchov</div><div class="memberValue"><a onclick="window.open('http://www.dagmarpechova.cz');BonaPage.stopEvent(event);" href="http://www.dagmarpechova.cz" target="_blank">www.dagmarpechova.cz</a></div></td><td class="memberDirectoryColumn3" width="25%"><div class="memberValue">Přijímám nové klienty</div><div class="memberValue">Dospělí 18-69</div><div class="memberValue">Možnost terapie venku, On-line, Osobně, Telefonicky</div></td><td class="memberDirectoryColumn4" width="25%"></td></tr><tr class="normal" bottomrow="true" onclick="MemberDirectoryListRenderer.redirectToMemberDetails('https://www.czap.cz/Sys/PublicProfile/76243700')" onmouseover="MemberDirectoryListRenderer.highlightRowAndPrev(this)" onmouseout="MemberDirectoryListRenderer.normlightRowAndPrev(this)"><td class="memberDirectoryBottomRow" colspan="4"><div class="mainDiv"><div class="memberValue">Humanistická psychoterapie (např. PCA, Rogers, Daseins, Gestalt, logoterapie aj.)</div></div></td></tr></tbody></table></div>
+        
+      <div class="clearEndContainer"></div></div></div></div></div></div></div></div></div></div></div></div><div class="cornersContainer"><div class="bottomCorners"><!--[if gt IE 6]><!--><div class="r1"><div class="r2"><div class="r3"><div class="r4"><div class="r5"></div></div></div></div></div><!--<![endif]--><div class="c5"></div><div class="c4"></div><div class="c3"></div><div class="c2"></div><div class="c1"></div></div></div></div>
+    
+    <span id="idPagingData2" style="display: inline;">Show:<select onchange="MemberDirectoryListRenderer.pagerChanged(this);"><option value="0">1-50</option><option value="50">51-100</option><option value="100">101-150</option><option value="150">151-200</option><option value="200">201-250</option><option value="250">251-300</option><option value="300">301-350</option><option value="350">351-400</option><option value="400">401-450</option><option value="450">451-500</option><option value="500">501-550</option><option value="550">551-600</option><option value="600">601-650</option><option value="650">651-700</option><option value="700">701-750</option><option value="750">751-800</option><option value="800">801-850</option><option value="850">851-900</option><option value="900">901-950</option><option value="950">951-1000</option><option value="1000">1001-1050</option><option value="1050">1051-1100</option><option value="1100">1101-1150</option><option value="1150">1151-1200</option><option value="1200">1201-1250</option><option value="1250">1251-1300</option><option value="1300">1301-1350</option><option value="1350">1351-1400</option><option value="1400">1401-1450</option><option value="1450">1451-1500</option><option value="1500">1501-1550</option><option value="1550">1551-1600</option><option value="1600">1601-1650</option><option value="1650">1651-1700</option><option value="1700">1701-1750</option><option value="1750">1751-1800</option><option value="1800">1801-1850</option><option value="1850">1851-1900</option><option value="1900">1901-1950</option><option value="1950">1951-2000</option><option value="2000">2001-2050</option><option value="2050">2051-2100</option><option value="2100">2101-2150</option><option value="2150">2151-2200</option><option value="2200">2201-2250</option><option value="2250">2251-2300</option><option value="2300">2301-2350</option><option value="2350">2351-2400</option><option value="2400">2401-2450</option><option value="2450">2451-2500</option><option value="2500">2501-2550</option><option value="2550">2551-2600</option><option value="2600">2601-2650</option><option value="2650">2651-2670</option></select></span>
+    <input type="hidden" name="FunctionalBlock1$ctl00$ctl00$SelectedMembers" id="FunctionalBlock1_ctl00_ctl00_SelectedMembers">
+  
+
+
+</div>
+
+  <noscript>
+    <div id="FunctionalBlock1_ctl00_noJsMessage_idConfirmWindow" class="commonMessageBox">
+	<div id="FunctionalBlock1_ctl00_noJsMessage_idConfirmWindowStyle" class="confirmWindowWarning messageBox">
+		<div class="cww">
+			<div class="cww1"></div>
+			<div class="cww2"></div>
+			<div class="cww3"></div>
+			<div class="cww4"></div>
+		</div>
+		<div class="cww-inner">
+			<div class="cww-co">
+					<div id="FunctionalBlock1_ctl00_noJsMessage_messageHeader" class="header">JavaScript is not supported</div>
+
+          <div id="FunctionalBlock1_ctl00_noJsMessage_messageText" class="text">JavaScript required. Your web browser either does not support JavaScript, or it is switched off.</div>
+			</div>
+		</div>
+		<div class="cww">
+			<div class="cww4"></div>
+			<div class="cww3"></div>
+			<div class="cww2"></div>
+			<div class="cww1"></div>
+		</div>
+	</div>
+</div>
+
+  </noscript>
+
+  
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="2AE9EEA8">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+document.getElementById('FunctionalBlock1_ctl00_jsSupportedContainer').style.display = 'block';MemberDirectoryListRenderer.labels.serverLoadingStarted = '<img src="/Admin/html_res/images/asyncloadprogress.gif">Loading...';MemberDirectoryListRenderer.labels.serverLoadingError = 'Loading error&nbsp;';MemberDirectoryListRenderer.labels.serverLoadingErrorAlert = 'Server error while loading data.<br>Please contact us at support@wildapricot.com and let us know what led to this error.<br><br>Sorry for any inconvenience.';MemberDirectoryListRenderer.labels.processingServerData = 'Processing data, please wait...';MemberDirectoryListRenderer.labels.processingCachedData = 'Processing cache...';MemberDirectoryListRenderer.labels.searchingKeywords = 'searching...';MemberDirectoryListRenderer.labels.searchingEmpty = 'loading...';MemberDirectoryListRenderer.labels.displayingFound = 'displaying...';MemberDirectoryListRenderer.labels.pagingTemplate = 'Show:{0}';MemberDirectoryListRenderer.labels.noMembersInDatabase = 'No matching records (only opted-in members are included)';MemberDirectoryListRenderer.labels.noMembersFound = 'No members found.';MemberDirectoryListRenderer.labels.detailsUrlTitle = 'Go to member details';MemberDirectoryListRenderer.labels.viewDetails = 'View details';MemberDirectoryListRenderer.labels.headers.name = 'Name';MemberDirectoryListRenderer.labels.headers.organization = 'Organization';MemberDirectoryListRenderer.labels.headers.level = 'Membership';MemberDirectoryListRenderer.selectedMembersFieldId = 'FunctionalBlock1_ctl00_ctl00_SelectedMembers';MemberDirectoryListRenderer.detailsUrlTemplate = 'https://www.czap.cz/Sys/PublicProfile/';MemberDirectoryListRenderer.searchBoxId = 'FunctionalBlock1_ctl00_ctl00_search';MemberDirectoryListRenderer.outputBlockId = 'FunctionalBlock1_ctl00_ctl00_memberDirectory';MemberDirectoryListRenderer.titleLabelId = '';MemberDirectoryListRenderer.imgTemplateRelativePath = '/Content/Pictures/UserPicture.ashx';MemberDirectoryListRenderer.titleTemplate = 'Member directory ({0})';MemberDirectoryListRenderer.MemberDirectoryListWebServiceUrl_LoadMembers = 'https://www.czap.cz/Sys/MemberDirectory/LoadMembers';MemberDirectoryListRenderer.VersionData = null;MemberDirectoryListRenderer.FormId = '7053044';MemberDirectoryListRenderer.init();//]]>
+</script>
+</form></div></div>
+</div></div>
+			</div>
+		</div>
+		<div class="zoneFooter1Outer zoneOuter">
+			<div class="zoneFooter1 container_12">
+				<div class="zoneFooter1Inner zoneInner s1_grid_12 s2_grid_12 s3_grid_12">
+<div id="id_Footer1" data-componentid="Footer1" class="WaPlaceHolder WaPlaceHolderFooter1" style="background-color:#FFFFFF;"><div style=""><div id="id_TUTm39T" class="WaGadgetFirst WaGadgetContent  gadgetStyleNone" style="" data-componentid="TUTm39T"><div class="gadgetStyleTitle"><h4 class="gadgetTitleH4">
+Partnerské organizace:</h4></div>
+<div class="gadgetStyleBody gadgetContentEditableArea" style="" data-editablearea="0" data-areaheight="auto">
+<p align="left"><a href="https://www.europsyche.org" target="_blank"><img src="/resources/Pictures/logo-2.svg" width="134" height="54" border="0" alt=""></a>&nbsp;<a href="http://www.upacr.cz" target="_blank"><img src="/resources/Pictures/Logo/UPA-C%cc%8cR-logo.png" alt="" title="" border="0" width="192" height="61"></a>&nbsp;<img src="/resources/Pictures/Sni%cc%81mek%20obrazovky%202022-11-14%20v_13.24.56.jpeg" alt="" title="" border="0" width="207" height="57"><br></p><p align="left"><a href="https://dusevnizdravi.vzp.cz" target="_blank"><img src="/resources/Pictures/VZP-VELKE-LOGO.png" alt="" title="" border="0" width="154" height="53"></a>&nbsp;<a href="https://www.cpzp.cz/preventivni-program/73" target="_blank"><img src="/resources/Pictures/Sni%cc%81mek%20obrazovky%202022-01-22%20v_8.20.33.jpeg" alt="" title="" border="0" width="144" height="54"></a><a href="https://www.zpmvcr.cz/pojistenci/bonusy-na-prevenci/psychoterapeuticke-poradenstvi" target="_blank"><img src="/resources/Pictures/image001.png" alt="" title="" border="0" width="165" height="49"></a>&nbsp;&nbsp;<a href="https://www.zpskoda.cz/pro-pojistence/zdravotni-programy-2023/prispevky-pro-zeny-a-muze" target="_blank"><img src="/resources/Pictures/ZPSKODALOGO.jpeg" alt="" title="" border="0" width="108" height="52"></a>&nbsp; &nbsp;<a href="https://www.rbp213.cz" target="_blank"><img src="/resources/Pictures/16801637651557421205213rbp-86-08-0-0-nalezato-pozitiv-CS5.jpg" alt="" title="" border="0" width="126" height="51"></a><a href="https://www.ozp.cz/" target="_blank"><img src="/resources/Pictures/Sni%cc%81mek%20obrazovky%202024-03-21%20v_16.47.30.jpeg" alt="" title="" border="0" width="139" height="33"></a></p><p align="left"><a href="https://nakladatelstvi.portal.cz/nakladatelstvi" target="_blank"><img src="/resources/Pictures/PORTAL_horizontalni%20logo%201_RGB.png" alt="" title="" border="0" width="150" height="59"></a>&nbsp;<a href="https://journals.muni.cz/psychoterapie" target="_blank" style="text-decoration: underline;"><img src="/resources/Pictures/casopis%20psychoterapie.png" alt="" title="" border="0" width="162" height="44" style="height: 44px; width: 162px; left: 732px; top: 81px;"></a><img src="/resources/Pictures/Sni%cc%81mek%20obrazovky%202023-02-27%20v_9.07.41-1.jpg" alt="" title="" border="0" width="233" height="49"><img src="/resources/Pictures/Sni%cc%81mek%20obrazovky%202022-01-25%20v_17.44.36.jpeg" alt="" title="" border="0" width="102" height="49">&nbsp;<img src="/resources/Pictures/logo%20socialni%20klinika.png" width="87" height="51" border="0" alt="">&nbsp;&nbsp;&nbsp;<a href="https://www.linkasluchatko.cz/" target="_blank"><img src="/resources/Pictures/suchatko.png" alt="" title="" border="0" width="62" height="51"></a></p></div>
+</div><div id="id_HtdV37E" class="WaGadget WaGadgetContent  gadgetStyleNone" style="" data-componentid="HtdV37E"><div class="gadgetStyleBody gadgetContentEditableArea" style="" data-editablearea="0" data-areaheight="auto">
+<p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="WaContentDivider WaContentDivider dividerStyle001" data-wacomponenttype="ContentDivider"></p></div>
+</div><div id="id_tYOmxMg" data-componentid="tYOmxMg" class="WaLayoutContainer" style=""><table cellspacing="0" cellpadding="0" class="WaLayoutTable" style=""><tbody><tr data-componentid="tYOmxMg_row" class="WaLayoutRow"><td id="id_6lDCQBe" data-componentid="6lDCQBe" class="WaLayoutItem" style="width:33%;"><div id="id_vpilrXI" class="WaLayoutPlaceHolder placeHolderContainer" data-componentid="vpilrXI" style=""><div style=""><div id="id_e4jXyZw" class="WaGadgetOnly WaGadgetContent  gadgetStyleNone" style="" data-componentid="e4jXyZw"><div class="gadgetStyleBody gadgetContentEditableArea" style="" data-editablearea="0" data-areaheight="auto">
+<p style="margin-bottom: 0px !important;"><strong>Identifikační údaje:</strong></p>
+
+<p style="margin-bottom: 0px !important;"><font style="font-size: 14px;"><span style="font-family: Helvetica;">Česká asociace pro psychoterapii, z.s.</span></font></p>
+
+<p style="margin-bottom: 0px !important;"><font style="font-size: 14px;"><span>Náměstí I.P. Pavlova 1785/3</span></font></p>
+
+<p style="margin-bottom: 0px !important;"><font style="font-size: 14px;"><span>Praha 2, 120 00</span></font></p>
+
+<p data-wacopycontent="1" style="margin-bottom: 0px !important;"><font data-wacopycontent="1"><font face="Helvetica" data-wacopycontent="1" style="font-size: 14px;">I<font data-wacopycontent="1">Č:&nbsp;</font></font><font data-wacopycontent="1" style="font-family: Helvetica;"><span data-wacopycontent="1"><span data-wacopycontent="1"><font style="font-size: 14px;">70860122</font></span></span></font></font></p><p data-wacopycontent="1" style="margin-bottom: 0px !important;"><font data-wacopycontent="1"><font data-wacopycontent="1" style="font-family: Helvetica;"><span data-wacopycontent="1"><span data-wacopycontent="1"><font style="font-size: 14px;">DIČ: CZ<font data-wacopycontent="1"><font data-wacopycontent="1" style="font-family: Helvetica;"><span data-wacopycontent="1"><span data-wacopycontent="1"><font style="font-size: 14px;">70860122</font></span></span></font></font></font></span></span></font></font></p></div>
+</div></div></div></td><td style="" data-componentid="6lDCQBe_separator" class="WaLayoutSeparator"><div style="width: inherit;"></div></td><td id="id_QsNH8rr" data-componentid="QsNH8rr" class="WaLayoutItem" style="width:33%;"><div id="id_FAEL1EN" class="WaLayoutPlaceHolder placeHolderContainer" data-componentid="FAEL1EN" style=""><div style=""><div id="id_9DxJtxh" class="WaGadgetFirst WaGadgetContent  gadgetStyleNone" style="" data-componentid="9DxJtxh"><div class="gadgetStyleBody gadgetContentEditableArea" style="" data-editablearea="0" data-areaheight="auto">
+<p style="margin-bottom: 0px !important;"><strong>Kontaktní údaje:</strong></p><p style="margin-bottom: 0px !important;"><font style="font-size: 14px;"><span style="font-family: Helvetica;">Telefon: +420 774 050 413</span><br></font></p><p style="margin-bottom: 0px;"><font face="Helvetica" style="font-size: 14px;">Email: info@czap.cz</font></p><p style="margin-bottom: 0px;"><font face="Helvetica"><span style="font-size: 14px;">Datová schránka:&nbsp;baeyyke</span></font></p></div>
+</div><div id="id_H7IRiyw" class="WaGadgetLast WaGadgetSocialProfile  gadgetStyleNone" style="margin-top:-8px;" data-componentid="H7IRiyw"><div class="gadgetStyleBody " style="" data-areaheight="auto">
+<div class="socialProfileWrapper alignLeft">
+	<ul class="orientationHorizontal">
+    <li>
+				<a href="https://www.facebook.com/czap.cz" title="Facebook" class="Facebook" target="_blank"></a>
+			</li>
+<li>
+				<a href="https://x.com/wildapricot" title="X" class="X" target="_blank"></a>
+			</li>
+<li>
+				<a href="http://www.linkedin.com/company/czap" title="LinkedIn" class="LinkedIn" target="_blank"></a>
+			</li>
+<li>
+				<a href="https://www.youtube.com/channel/UC8J58G9hH8ZnO9o3QHdClPQ" title="YouTube" class="YouTube" target="_blank"></a>
+			</li>
+<li>
+				<a href="https://www.instagram.com/psychoterapie.cz/" title="Instagram" class="Instagram" target="_blank"></a>
+			</li>
+		
+ 
+	</ul>
+</div>
+</div>
+</div></div></div></td><td style="" data-componentid="QsNH8rr_separator" class="WaLayoutSeparator"><div style="width: inherit;"></div></td><td id="id_lo8IWI8" data-componentid="lo8IWI8" class="WaLayoutItem" style="width:33%;"><div id="id_JczZENm" class="WaLayoutPlaceHolder placeHolderContainer" data-componentid="JczZENm" style=""><div style=""><div id="id_5hrmlo5" class="WaGadgetOnly WaGadgetContent  gadgetStyleNone" style="" data-componentid="5hrmlo5"><div class="gadgetStyleBody gadgetContentEditableArea" style="" data-editablearea="0" data-areaheight="auto">
+<p style="line-height: 16px; margin-bottom: 0px !important;"><font face="Helvetica" style="font-size: 14px;"><strong></strong></font></p><p style="margin-bottom: 0px !important;"><strong>Bankovní spojení:</strong></p><p><font style="font-size: 14px;">Číslo účtu :&nbsp;22332233 / 2010&nbsp;</font></p><p><br></p></div>
+</div></div></div></td></tr></tbody></table> </div><div id="id_25ogiWm" data-componentid="25ogiWm" class="WaLayoutContainerLast" style=""><table cellspacing="0" cellpadding="0" class="WaLayoutTable" style=""><tbody><tr data-componentid="25ogiWm_row" class="WaLayoutRow"><td id="id_XZ4Uwb8" data-componentid="XZ4Uwb8" class="WaLayoutItem" style="width:50%;"><div id="id_xwIqLqb" class="WaLayoutPlaceHolder placeHolderContainer" data-componentid="xwIqLqb" style=""><div style=""><div id="id_kgXCvm7" class="WaGadgetOnly WaGadgetCustomHTML  gadgetStyleNone" style="" data-componentid="kgXCvm7"><div class="gadgetStyleBody " style="" data-areaheight="auto">
+© Česká asociace pro psychoterapii <span id="year">2026</span><p></p> <!-- JS before /body --> <script> document.getElementById("year").innerHTML = new Date().getFullYear(); </script></div>
+</div></div></div></td><td style="" data-componentid="XZ4Uwb8_separator" class="WaLayoutSeparator"><div style="width: inherit;"></div></td><td id="id_QAWdflu" data-componentid="QAWdflu" class="WaLayoutItem" style="width:50%;"><div id="id_o2VUkGv" class="WaLayoutPlaceHolder placeHolderContainer" data-componentid="o2VUkGv" style=""><div style=""><div id="id_7n4cRil" class="WaGadgetOnly WaGadgetContent  gadgetStyleNone" style="" data-componentid="7n4cRil"><div class="gadgetStyleBody gadgetContentEditableArea" style="" data-editablearea="0" data-areaheight="auto">
+<p align="right"><a href="/GDPR" target="_blank">Ochrana osobních údajů</a><br></p></div>
+</div></div></div></td></tr></tbody></table> </div></div>
+</div></div>
+			</div>
+		</div>
+		<!-- /footer zone -->
+		
+		<!-- branding zone -->
+<div class="zoneBrandingOuter zoneOuter">
+			<div class="zoneBranding container_12">
+				<div class="zoneBrandingInner zoneInner s1_grid_12 s2_grid_12 s3_grid_12">
+<div id="idFooterPoweredByContainer">
+	<span id="idFooterPoweredByWA">
+Built on <a href="https://register.wildapricot.com/?refcode=S8H3M" target="_blank">Wild Apricot</a> • Designed with <a href="https://newpathconsulting.com/watm" target="_blank">EZ Web Designer</a></span>
+</div>
+</div>
+			</div>
+		</div>
+<!-- /branding zone -->
+<div id="idCustomJsContainer" class="cnCustomJsContainer">
+<!-- Google Tag Manager
+<script>
+try
+{
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KGZFDT8');
+}
+catch(err)
+{}</script>
+End Google Tag Manager -->
+<script src="/resources/Theme/WildApricotTextManager/wildapricot-textmanager.js">
+try
+{
+    
+
+}
+catch(err)
+{}</script>
+<script>
+try
+{
+    
+  // Enter your license key if you have one - omit to use a trial that uses the first 10 lines of a config file
+  license_key = "9462-D0AD-DC48-654B";
+  enable_public_editor = true; env = "production";
+
+}
+catch(err)
+{}</script></div>
+</div>
+
+<script type="text/javascript">if (window.BonaPage && BonaPage.setPageState) { BonaPage.setPageState(BonaPage.PAGE_PARSED); }</script><iframe id="createFrameToOpen" style="display: none;"></iframe><span><div id="idPageShadingContainer" style="position: absolute; left: -3700px; top: -3700px; width: 1px; height: 1px; z-index: 7337; overflow: hidden; visibility: hidden; background-color: #FFFFFF; -moz-opacity: 0.73; -khtml-opacity: 0.73; opacity: 0.73;"><div id="idPageShadingWaitMessage" style="display: none; position: absolute; width: 350px; text-align: center;"><img src="/Admin/html_res/images/async-load-progress-01.gif" border="0"><br>&nbsp;<br>&nbsp;&nbsp;<span id="idPageShadingWaitMessageText" style="font-size: 12px; font-weight: bold;">Please wait...</span></div></div></span><div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><button type="button" id="cboxPrevious"></button><button type="button" id="cboxNext"></button><button id="cboxSlideshow"></button><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div></div><div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div><div id="lightbox" class="lightbox" style="display: none;"><div class="wa-lb-nav"><a class="wa-lb-prev"></a><a class="wa-lb-next"></a></div><div class="lb-waIconsContainer"><a class="lb-download"></a><a class="lb-close"></a></div><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="><div class="lb-nav"><a class="lb-prev" href=""></a><a class="lb-next" href=""></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div></div></div></div><div style="visibility: hidden; position: absolute; width: 100%; top: -10000px; left: 0px; right: 0px; transition: visibility linear 0.3s, opacity 0.3s linear; opacity: 0;"><div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.5;"></div><div style="margin: 0px auto; top: 0px; left: 0px; right: 0px; position: fixed; border: 1px solid rgb(204, 204, 204); z-index: 2000000000; background-color: rgb(255, 255, 255);"><iframe title="ověření recaptcha vyprší za dvě minuty" name="c-mdm67saol9bp" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/bframe?hl=cs&amp;v=U5VsmTDhJM1iOJUyw4DEUTYv&amp;k=6LfmM_UhAAAAAJSHT-BwkAlQgN0mMViOmaK7oEIV&amp;bft=0dAFcWeA7Thryoby9xNy7wfZDTXHtkkEe2uoYcVuZP8ALEbJEXqM_SMNZ4cVpDN44akgeB61PwGBTRRpuM_HkfNi5qfHdCOJHgTw" style="width: 100%; height: 100%;"></iframe></div></div><div class="watm-icon watm-icon-left watm-active" aria-expanded="false"></div></body></html>
