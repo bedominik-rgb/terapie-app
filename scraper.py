@@ -1,92 +1,67 @@
-from playwright.sync_api import sync_playwright
+import requests
+from bs4 import BeautifulSoup
 import csv
 import time
 
-JS_SCRAPE = (
-    "() => {"
-    "  const vysledky = [];"
-    "  const radky = document.querySelectorAll('td.memberDirectoryColumn1');"
-    "  radky.forEach(td => {"
-    "    const jmeno = td.querySelector('.memberValue');"
-    "    if (!jmeno || !jmeno.innerText.trim()) return;"
-    "    const radek = td.parentElement;"
-    "    const col2 = radek.querySelector('.memberDirectoryColumn2');"
-    "    const col3 = radek.querySelector('.memberDirectoryColumn3');"
-    "    const nextRadek = radek.nextElementSibling;"
-    "    const bottom = nextRadek ? nextRadek.querySelector('.memberDirectoryBottomRow .memberValue') : null;"
-    "    const h2 = col2 ? col2.querySelectorAll('.memberValue') : [];"
-    "    const h3 = col3 ? col3.querySelectorAll('.memberValue') : [];"
-    "    vysledky.push({"
-    "      jmeno: jmeno.innerText.trim(),"
-    "      mesto: h2[0] ? h2[0].innerText.trim() : '',"
-    "      web: h2[1] ? h2[1].innerText.trim() : '',"
-    "      dostupnost: h3[0] ? h3[0].innerText.trim() : '',"
-    "      cilova_skupina: h3[1] ? h3[1].innerText.trim() : '',"
-    "      forma: h3[2] ? h3[2].innerText.trim() : '',"
-    "      styl_terapie: bottom ? bottom.innerText.trim() : '',"
-    "    });"
-    "  });"
-    "  return vysledky;"
-    "}"
-)
-
-JS_MOZNOSTI = (
-    "() => {"
-    "  const sel = document.querySelector('#idPagingData select');"
-    "  if (!sel) return [];"
-    "  return Array.from(sel.options).map(o => o.value || o.text);"
-    "}"
-)
-
-def scrape_stranku(page):
-    return page.evaluate(JS_SCRAPE)
-
-def scrape_czap():
+def scrape_vzp():
     vsichni = []
-
-    with sync_playwright() as p:
-        print("Spoustim prohlizec...")
-        browser = p.chromium.launch(headless=False)
-        page = browser.new_page()
-        page.goto("https://www.czap.cz/adresar")
-        print("Cekam na nacteni...")
-        time.sleep(8)
-
-        moznosti = page.evaluate(JS_MOZNOSTI)
-        print(f"Nalezeno stranek: {len(moznosti)}")
-
-        for i, moznost in enumerate(moznosti):
-            print(f"Scraping stranky {i+1}/{len(moznosti)} ({moznost})...")
-
-            js_klik = (
-                "() => {"
-                "  const sel = document.querySelector('#idPagingData select');"
-                "  sel.value = '" + moznost + "';"
-                "  sel.dispatchEvent(new Event('change', {bubbles: true}));"
-                "}"
-            )
-            page.evaluate(js_klik)
-            time.sleep(5)
-
-            data = scrape_stranku(page)
-            if not data:
-                print("  Zadna data, preskakuji...")
+    
+    # Zjistíme počet stránek z první stránky
+    url = "https://dusevnizdravi.vzp.cz/seznam-terapeutu/"
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, "html.parser")
+    
+    # Najdeme poslední číslo stránky
+    strankovani = soup.select("a[href*='stranka=']")
+    cisla = []
+    for a in strankovani:
+        try:
+            cislo = int(a.text.strip())
+            cisla.append(cislo)
+        except:
+            pass
+    
+    max_stranka = max(cisla) if cisla else 1
+    print(f"Celkem stranek: {max_stranka}")
+    
+    for stranka in range(1, max_stranka + 1):
+        url = f"https://dusevnizdravi.vzp.cz/seznam-terapeutu/?queryKraj=&queryZamereni=&queryForma=&queryKapacita=&queryText=&stranka={stranka}"
+        print(f"Scraping stranky {stranka}/{max_stranka}...")
+        
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        
+        radky = soup.select("table tr")[1:]
+        
+        for radek in radky:
+            sloupce = radek.find_all("td")
+            if len(sloupce) < 5:
                 continue
-            vsichni.extend(data)
-            print(f"  -> {len(data)} terapeutu, celkem: {len(vsichni)}")
-
-        browser.close()
-
-    if not vsichni:
-        print("Zadna data!")
-        return
-
-    with open("terapeuti.csv", "w", newline="", encoding="utf-8-sig") as f:
+            
+            jmeno_tag = sloupce[0].find("a")
+            jmeno = jmeno_tag.text.strip() if jmeno_tag else ""
+            adresa = sloupce[0].get_text(separator=" ").replace(jmeno, "").strip()
+            web = "https://dusevnizdravi.vzp.cz" + jmeno_tag["href"] if jmeno_tag else ""
+            
+            vsichni.append({
+                "jmeno": jmeno,
+                "adresa": adresa,
+                "kraj": sloupce[1].text.strip(),
+                "zamereni": sloupce[2].text.strip(),
+                "forma": sloupce[3].text.strip(),
+                "kapacita": sloupce[4].text.strip(),
+                "zdroj": "VZP",
+                "web": web,
+            })
+        
+        time.sleep(1)
+    
+    with open("terapeuti_vzp.csv", "w", newline="", encoding="utf-8-sig") as f:
         writer = csv.DictWriter(f, fieldnames=vsichni[0].keys())
         writer.writeheader()
         writer.writerows(vsichni)
-
+    
     print(f"\nHotovo! Celkem {len(vsichni)} terapeutu")
-    print("Ulozeno do terapeuti.csv")
+    print("Ulozeno do terapeuti_vzp.csv")
 
-scrape_czap()
+scrape_vzp()

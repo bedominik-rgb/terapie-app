@@ -4,7 +4,7 @@ import pandas as pd
 app = Flask(__name__)
 
 def nacti_terapeuty():
-    df = pd.read_csv("terapeuti.csv", encoding="utf-8-sig")
+    df = pd.read_csv("terapeuti_vse.csv", encoding="utf-8-sig")
     df = df.fillna("")
     return df
 
