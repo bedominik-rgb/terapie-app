@@ -164,13 +164,24 @@
                     </select>
                 </div>
                 <div>
-                    <label>Forma</label>
+                    <label>Forma</label> 
                     <select name="forma">
                         <option value="">Všechny</option>
                         <option value="Online" {% if forma == "Online" %}selected{% endif %}>Online</option>
                         <option value="Osobně" {% if forma == "Osobně" %}selected{% endif %}>Osobně</option>
                         <option value="Telefonicky" {% if forma == "Telefonicky" %}selected{% endif %}>Telefonicky</option>
                     </select>
+                </div>
+                <div>
+                     <label>Věková skupina klientů</label>
+                     <select name="vek">
+                         <option value="">Všechny</option>
+                         <option value="Děti" {% if vek == "Děti" %}selected{% endif %}>Děti</option>
+                        <option value="Dospívající" {% if vek == "Dospívající" %}selected{% endif %}>Dospívající</option>
+                        <option value="Dospělí" {% if vek == "Dospělí" %}selected{% endif %}>Dospělí</option>
+                        <option value="70+" {% if vek == "70+" %}selected{% endif %}>Senioři (70+)</option>
+                        <option value="Páry" {% if vek == "Páry" %}selected{% endif %}>Páry</option>
+                     </select>
                 </div>
                 <div>
                     <label>Styl terapie</label>

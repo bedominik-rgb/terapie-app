@@ -17,6 +17,7 @@ def index():
     dostupnost = request.args.get("dostupnost", "").strip()
     forma = request.args.get("forma", "").strip()
     styl = request.args.get("styl", "").strip()
+    vek = request.args.get("vek", "").strip()
 
     # Filtrování
     if mesto:
@@ -25,6 +26,8 @@ def index():
         df = df[df["dostupnost"].str.contains(dostupnost, case=False, na=False)]
     if forma:
         df = df[df["forma"].str.contains(forma, case=False, na=False)]
+    if vek:
+        df = df[df["cilova_skupina"].str.contains(vek, case=False, na=False)]
     if styl:
         df = df[df["styl_terapie"].str.contains(styl, case=False, na=False)]
 
@@ -37,7 +40,8 @@ def index():
         mesto=mesto,
         dostupnost=dostupnost,
         forma=forma,
-        styl=styl
+        styl=styl,
+        vek=vek
     )
 
 if __name__ == "__main__":
