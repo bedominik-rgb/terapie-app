@@ -45,5 +45,7 @@ vsechni = pd.concat([
     cskbt.reindex(columns=sloupce, fill_value=""),
 ], ignore_index=True)
 
+# Oprava textu cílové skupiny
+vsechni["cilova_skupina"] = vsechni["cilova_skupina"].str.replace("do 17 let", "do 18 let", regex=False)
 vsechni.to_csv("terapeuti_vse.csv", index=False, encoding="utf-8-sig")
 print(f"Hotovo! Celkem {len(vsechni)} terapeutů")
