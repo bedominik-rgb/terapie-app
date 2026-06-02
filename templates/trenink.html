@@ -262,6 +262,18 @@ function removeWorkout(id) {
   const d = load(); d.workouts = d.workouts.filter(w => w.id !== id); save(d);
 }
 
+function updateWorkout(id, workout) {
+  const d = load();
+  const idx = d.workouts.findIndex(w => w.id === id);
+  if (idx === -1) return;
+  workout.id = id;
+  d.workouts[idx] = workout;
+  workout.exercises.forEach(ex => { if (ex.name && !d.names.includes(ex.name)) d.names.push(ex.name); });
+  d.workouts.sort((a, b) => b.date.localeCompare(a.date));
+  save(d);
+  updateDatalist();
+}
+
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
 
 function today() {
@@ -455,8 +467,9 @@ function openDetail(id) {
       <div style="font-size:22px;font-weight:800;color:var(--accent);">${Math.round(vol).toLocaleString('cs')} kg</div>
       <div style="font-size:12px;color:var(--muted);">celkový objem</div>
     </div>` : ''}
-    <div style="margin-top:16px;">
-      <button class="btn btn-danger btn-full" onclick="doDelete('${w.id}')">Smazat trénink</button>
+    <div style="margin-top:16px;display:flex;gap:8px;">
+      <button class="btn btn-secondary btn-full" onclick="startEdit('${w.id}')">✏️ Upravit</button>
+      <button class="btn btn-danger btn-full" onclick="doDelete('${w.id}')">Smazat</button>
     </div>`;
   document.getElementById('modal-overlay').classList.add('open');
 }
@@ -472,30 +485,65 @@ function doDelete(id) {
   else renderDashboard();
 }
 
-// ─── NEW WORKOUT ──────────────────────────────────────────────────────────────
+// ─── NEW / EDIT WORKOUT ───────────────────────────────────────────────────────
 
-let nw = null; // new workout state
+let nw = null;
+let editId = null;
 
 function renderNew() {
+  editId = null;
   nw = { date: today(), name: '', exercises: [] };
-  const el = document.getElementById('page-new');
-  el.innerHTML = `
-    <div class="section-title">Nový trénink</div>
+  renderWorkoutForm();
+  addEx();
+}
+
+function startEdit(id) {
+  const d = load();
+  const w = d.workouts.find(x => x.id === id);
+  if (!w) return;
+  editId = id;
+  nw = {
+    date: w.date,
+    name: w.name || '',
+    exercises: w.exercises.map(ex => ({
+      name: ex.name,
+      sets: ex.sets.map(s => ({ reps: String(s.reps), weight: String(s.weight) }))
+    }))
+  };
+  closeModal();
+  ['dashboard','new','history','stats'].forEach(p => {
+    document.getElementById('page-'+p).classList.toggle('active', p === 'new');
+    document.getElementById('nav-'+p).classList.toggle('active', p === 'new');
+  });
+  activePage = 'new';
+  renderWorkoutForm();
+  reRenderExercises();
+}
+
+function cancelEdit() {
+  editId = null;
+  showPage('history');
+}
+
+function renderWorkoutForm() {
+  const isEdit = !!editId;
+  document.getElementById('page-new').innerHTML = `
+    <div class="section-title">${isEdit ? 'Upravit trénink' : 'Nový trénink'}</div>
     <div class="card">
       <div class="form-group">
         <label class="form-label">Datum</label>
-        <input type="date" class="form-input" id="nw-date" value="${today()}" oninput="nw.date=this.value">
+        <input type="date" class="form-input" id="nw-date" value="${nw.date}" oninput="nw.date=this.value">
       </div>
       <div class="form-group" style="margin-bottom:0;">
         <label class="form-label">Název tréninku <span style="font-weight:400;color:var(--muted);">(volitelné)</span></label>
-        <input type="text" class="form-input" id="nw-name" placeholder="např. Horní část, Push, Nohy..." oninput="nw.name=this.value">
+        <input type="text" class="form-input" id="nw-name" value="${escHtml(nw.name)}" placeholder="např. Horní část, Push, Nohy..." oninput="nw.name=this.value">
       </div>
     </div>
     <div id="ex-container"></div>
     <button class="btn btn-secondary btn-full" style="margin-bottom:10px;" onclick="addEx()">+ Přidat cvik</button>
-    <button class="btn btn-primary btn-full" onclick="doSave()">Uložit trénink ✓</button>
+    <button class="btn btn-primary btn-full" onclick="doSave()">${isEdit ? 'Uložit změny ✓' : 'Uložit trénink ✓'}</button>
+    ${isEdit ? `<button class="btn btn-secondary btn-full" style="margin-top:8px;" onclick="cancelEdit()">Zrušit</button>` : ''}
   `;
-  addEx();
 }
 
 function addEx() {
@@ -591,17 +639,32 @@ function doSave() {
   };
   if (!workout.exercises.length) { alert('Přidej alespoň jeden cvik se sériemi.'); return; }
 
-  saveWorkout(workout);
   const totalSets = workout.exercises.reduce((a, e) => a + e.sets.length, 0);
-  document.getElementById('page-new').innerHTML = `<div class="empty-state" style="padding-top:60px;">
-    <div class="empty-icon">✅</div>
-    <h3>Trénink uložen!</h3>
-    <p>${workout.exercises.length} cviků, ${totalSets} sérií.</p>
-    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-      <button class="btn btn-primary" onclick="renderNew()">Další trénink</button>
-      <button class="btn btn-secondary" onclick="showPage('dashboard')">Na přehled</button>
-    </div>
-  </div>`;
+
+  if (editId) {
+    updateWorkout(editId, workout);
+    editId = null;
+    document.getElementById('page-new').innerHTML = `<div class="empty-state" style="padding-top:60px;">
+      <div class="empty-icon">✅</div>
+      <h3>Změny uloženy!</h3>
+      <p>${workout.exercises.length} cviků, ${totalSets} sérií.</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="showPage('history')">Na historii</button>
+        <button class="btn btn-secondary" onclick="showPage('dashboard')">Na přehled</button>
+      </div>
+    </div>`;
+  } else {
+    saveWorkout(workout);
+    document.getElementById('page-new').innerHTML = `<div class="empty-state" style="padding-top:60px;">
+      <div class="empty-icon">✅</div>
+      <h3>Trénink uložen!</h3>
+      <p>${workout.exercises.length} cviků, ${totalSets} sérií.</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="renderNew()">Další trénink</button>
+        <button class="btn btn-secondary" onclick="showPage('dashboard')">Na přehled</button>
+      </div>
+    </div>`;
+  }
 }
 
 function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
