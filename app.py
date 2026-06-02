@@ -44,5 +44,9 @@ def index():
         vek=vek
     )
 
+@app.route("/trenink")
+def trenink():
+    return render_template("trenink.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
