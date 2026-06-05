@@ -306,7 +306,10 @@ function maxWeight(ex) {
 
 function volume(w) {
   return w.exercises.reduce((a, ex) =>
-    a + ex.sets.reduce((b, s) => b + (parseFloat(s.weight)||0) * (parseInt(s.reps)||0), 0), 0);
+    a + ex.sets.reduce((b, s) => {
+      const reps = (parseInt(s.reps)||0) + (ex.mode === 'unilateral' ? (parseInt(s.repsR)||0) : 0);
+      return b + (parseFloat(s.weight)||0) * reps;
+    }, 0), 0);
 }
 
 function prs(data) {
@@ -819,8 +822,11 @@ function renderExStats(name) {
         sets: ex.sets,
         mode: ex.mode || 'both',
         maxW: maxWeight(ex),
-        vol: ex.sets.reduce((a, s) => a + (parseFloat(s.weight)||0)*(parseInt(s.reps)||0), 0),
-        totalReps: ex.sets.reduce((a, s) => a + (parseInt(s.reps)||0), 0)
+        vol: ex.sets.reduce((a, s) => {
+          const reps = (parseInt(s.reps)||0) + (ex.mode === 'unilateral' ? (parseInt(s.repsR)||0) : 0);
+          return a + (parseFloat(s.weight)||0) * reps;
+        }, 0),
+        totalReps: ex.sets.reduce((a, s) => a + (parseInt(s.reps)||0) + (ex.mode === 'unilateral' ? (parseInt(s.repsR)||0) : 0), 0)
       });
     });
   });
