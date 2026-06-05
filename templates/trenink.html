@@ -833,12 +833,12 @@ function renderExStats(name) {
 
   document.getElementById('ex-stats').innerHTML = `
     <div class="stats-grid" style="margin-bottom:14px;">
-      <div class="stat-card"><div class="stat-val" style="color:#f59e0b;">${pr}</div><div class="stat-lbl">PR (kg)</div></div>
+      <div class="stat-card"><div class="stat-val" style="color:#f59e0b;">${pr}</div><div class="stat-lbl">Max. váha (kg)</div></div>
       <div class="stat-card"><div class="stat-val">${occurrences.length}</div><div class="stat-lbl">Tréninků</div></div>
-      <div class="stat-card"><div class="stat-val">${lastOcc.maxW}</div><div class="stat-lbl">Naposledy (kg)</div></div>
+      <div class="stat-card"><div class="stat-val">${Math.round(lastOcc.vol).toLocaleString('cs')}</div><div class="stat-lbl">Objem naposledy</div></div>
     </div>
     <div class="card">
-      <div class="card-label">Progres maximální váhy</div>
+      <div class="card-label">Progres celkového objemu (kg × opak.)</div>
       <div class="chart-container"><canvas id="ch"></canvas></div>
     </div>
     <div class="card">
@@ -859,8 +859,8 @@ function renderExStats(name) {
       data: {
         labels: occurrences.map(o => o.date),
         datasets: [{
-          label: 'Max. váha (kg)',
-          data: occurrences.map(o => o.maxW),
+          label: 'Objem (kg)',
+          data: occurrences.map(o => Math.round(o.vol)),
           borderColor: '#6366f1',
           backgroundColor: 'rgba(99,102,241,0.08)',
           borderWidth: 2.5,
