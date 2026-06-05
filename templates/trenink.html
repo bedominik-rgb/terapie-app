@@ -136,12 +136,23 @@
     }
     .btn-remove:hover { color: var(--danger); }
     .pr-hint { font-size: 12px; color: var(--muted); font-style: italic; text-align: right; margin-bottom: 8px; }
+    .ex-mode-toggle { display: flex; gap: 5px; margin-bottom: 10px; }
+    .mode-btn {
+      flex: 1; padding: 5px 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.3px;
+      border: 1.5px solid var(--border); border-radius: 6px; background: white;
+      cursor: pointer; color: var(--muted); font-family: inherit; transition: all 0.15s; text-align: center;
+    }
+    .mode-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
     .sets-head {
       display: grid; grid-template-columns: 36px 1fr 1fr 28px;
       gap: 8px; padding: 0 2px; margin-bottom: 6px;
     }
+    .sets-head-uni { grid-template-columns: 36px 1fr 1fr 1fr 28px; }
+    .sets-head-bw  { grid-template-columns: 36px 1fr 28px; }
     .sets-head span { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; text-align: center; }
     .set-row { display: grid; grid-template-columns: 36px 1fr 1fr 28px; gap: 8px; align-items: center; margin-bottom: 6px; }
+    .set-row-uni { grid-template-columns: 36px 1fr 1fr 1fr 28px; }
+    .set-row-bw  { grid-template-columns: 36px 1fr 28px; }
     .set-num { font-size: 13px; font-weight: 700; color: var(--muted); text-align: center; }
     .set-input {
       width: 100%; padding: 8px 6px; border: 1.5px solid var(--border); border-radius: 8px;
@@ -461,7 +472,7 @@ function openDetail(id) {
     </div>
     ${w.exercises.map(ex => `<div class="detail-exercise">
       <div class="detail-exercise-name">${ex.name}</div>
-      <div class="chips">${ex.sets.map((s,i) => `<span class="set-badge">S${i+1}: ${s.reps}×${s.weight} kg</span>`).join('')}</div>
+      <div class="chips">${ex.sets.map((s,i) => `<span class="set-badge">S${i+1}: ${fmtSetBadge(s, ex.mode)}</span>`).join('')}</div>
     </div>`).join('')}
     ${vol > 0 ? `<div style="text-align:center;padding:12px;background:var(--accent-light);border-radius:10px;margin-top:8px;">
       <div style="font-size:22px;font-weight:800;color:var(--accent);">${Math.round(vol).toLocaleString('cs')} kg</div>
@@ -510,7 +521,8 @@ function startEdit(id) {
     name: w.name || '',
     exercises: w.exercises.map(ex => ({
       name: ex.name,
-      sets: ex.sets.map(s => ({ reps: String(s.reps), weight: String(s.weight) }))
+      mode: ex.mode || 'both',
+      sets: ex.sets.map(s => { const o = { reps: String(s.reps), weight: String(s.weight) }; if (s.repsR !== undefined) o.repsR = String(s.repsR); return o; })
     }))
   };
   closeModal();
@@ -538,7 +550,8 @@ function repeatWorkout(id) {
     name: w.name || '',
     exercises: w.exercises.map(ex => ({
       name: ex.name,
-      sets: ex.sets.map(s => ({ reps: String(s.reps), weight: String(s.weight) }))
+      mode: ex.mode || 'both',
+      sets: ex.sets.map(s => { const o = { reps: String(s.reps), weight: String(s.weight) }; if (s.repsR !== undefined) o.repsR = String(s.repsR); return o; })
     }))
   };
   closeModal();
@@ -573,7 +586,7 @@ function renderWorkoutForm() {
 }
 
 function addEx() {
-  nw.exercises.push({ name: '', sets: [{ reps: '', weight: '' }] });
+  nw.exercises.push({ name: '', mode: 'both', sets: [{ reps: '', weight: '' }] });
   reRenderExercises();
   setTimeout(() => {
     const inputs = document.querySelectorAll('.exercise-name-input');
@@ -589,6 +602,7 @@ function reRenderExercises() {
 
 function exBlock(i) {
   const ex = nw.exercises[i];
+  const mode = ex.mode || 'both';
   const pr = prevMax(ex.name);
   return `<div class="exercise-block" id="exb-${i}">
     <div class="exercise-block-head">
@@ -597,14 +611,53 @@ function exBlock(i) {
         oninput="nw.exercises[${i}].name=this.value; updatePRHint(${i}, this.value)">
       <button class="btn-remove" onclick="removeEx(${i})">✕</button>
     </div>
+    <div class="ex-mode-toggle">
+      <button class="mode-btn ${mode==='both'?'active':''}" onclick="updateExMode(${i},'both')">Oboustranně</button>
+      <button class="mode-btn ${mode==='unilateral'?'active':''}" onclick="updateExMode(${i},'unilateral')">L / P</button>
+      <button class="mode-btn ${mode==='bodyweight'?'active':''}" onclick="updateExMode(${i},'bodyweight')">Bez závaží</button>
+    </div>
     <div class="pr-hint" id="hint-${i}">${pr ? `Max. váha: <strong>${pr} kg</strong>` : ''}</div>
-    <div class="sets-head"><span>Série</span><span>Opak.</span><span>Váha (kg)</span><span></span></div>
-    <div id="sets-${i}">${ex.sets.map((s, si) => setRow(i, si, s)).join('')}</div>
+    ${setsHeader(mode)}
+    <div id="sets-${i}">${ex.sets.map((s, si) => setRow(i, si, s, mode)).join('')}</div>
     <button class="btn btn-secondary btn-full btn-sm" style="margin-top:6px;" onclick="addSet(${i})">+ Přidat sérii</button>
   </div>`;
 }
 
-function setRow(ei, si, s) {
+function setsHeader(mode) {
+  if (mode === 'unilateral')
+    return `<div class="sets-head sets-head-uni"><span>Série</span><span>L (opak.)</span><span>P (opak.)</span><span>Váha (kg)</span><span></span></div>`;
+  if (mode === 'bodyweight')
+    return `<div class="sets-head sets-head-bw"><span>Série</span><span>Opak.</span><span></span></div>`;
+  return `<div class="sets-head"><span>Série</span><span>Opak.</span><span>Váha (kg)</span><span></span></div>`;
+}
+
+function updateExMode(i, mode) {
+  const ex = nw.exercises[i];
+  if (mode === 'unilateral' && ex.mode !== 'unilateral') {
+    ex.sets.forEach(s => { if (s.repsR === undefined) s.repsR = s.reps; });
+  }
+  ex.mode = mode;
+  reRenderExercises();
+}
+
+function setRow(ei, si, s, mode) {
+  const m = mode || 'both';
+  if (m === 'unilateral') return `<div class="set-row set-row-uni" id="sr-${ei}-${si}">
+    <div class="set-num">${si+1}</div>
+    <input type="number" class="set-input" placeholder="—" value="${s.reps}" min="1"
+      oninput="nw.exercises[${ei}].sets[${si}].reps=this.value">
+    <input type="number" class="set-input" placeholder="—" value="${s.repsR!==undefined?s.repsR:s.reps}" min="1"
+      oninput="nw.exercises[${ei}].sets[${si}].repsR=this.value">
+    <input type="number" class="set-input" placeholder="—" value="${s.weight}" step="0.5" min="0"
+      oninput="nw.exercises[${ei}].sets[${si}].weight=this.value">
+    <button class="btn-remove" onclick="removeSet(${ei},${si})">✕</button>
+  </div>`;
+  if (m === 'bodyweight') return `<div class="set-row set-row-bw" id="sr-${ei}-${si}">
+    <div class="set-num">${si+1}</div>
+    <input type="number" class="set-input" placeholder="—" value="${s.reps}" min="1"
+      oninput="nw.exercises[${ei}].sets[${si}].reps=this.value">
+    <button class="btn-remove" onclick="removeSet(${ei},${si})">✕</button>
+  </div>`;
   return `<div class="set-row" id="sr-${ei}-${si}">
     <div class="set-num">${si+1}</div>
     <input type="number" class="set-input" placeholder="—" value="${s.reps}" min="1" max="999"
@@ -630,17 +683,20 @@ function prevMax(name) {
 }
 
 function addSet(ei) {
+  const mode = nw.exercises[ei].mode || 'both';
   const prev = nw.exercises[ei].sets.slice(-1)[0] || { reps: '', weight: '' };
   const ns = { reps: prev.reps, weight: prev.weight };
+  if (mode === 'unilateral') ns.repsR = prev.repsR !== undefined ? prev.repsR : prev.reps;
   nw.exercises[ei].sets.push(ns);
   const si = nw.exercises[ei].sets.length - 1;
-  document.getElementById(`sets-${ei}`).insertAdjacentHTML('beforeend', setRow(ei, si, ns));
+  document.getElementById(`sets-${ei}`).insertAdjacentHTML('beforeend', setRow(ei, si, ns, mode));
 }
 
 function removeSet(ei, si) {
   if (nw.exercises[ei].sets.length <= 1) return;
+  const mode = nw.exercises[ei].mode || 'both';
   nw.exercises[ei].sets.splice(si, 1);
-  document.getElementById(`sets-${ei}`).innerHTML = nw.exercises[ei].sets.map((s, i) => setRow(ei, i, s)).join('');
+  document.getElementById(`sets-${ei}`).innerHTML = nw.exercises[ei].sets.map((s, i) => setRow(ei, i, s, mode)).join('');
 }
 
 function removeEx(i) {
@@ -654,13 +710,18 @@ function doSave() {
     name: nw.name.trim(),
     exercises: nw.exercises
       .filter(ex => ex.name.trim())
-      .map(ex => ({
-        name: ex.name.trim(),
-        sets: ex.sets.filter(s => s.reps !== '' || s.weight !== '').map(s => ({
-          reps: parseInt(s.reps) || 0,
-          weight: parseFloat(s.weight) || 0
-        }))
-      }))
+      .map(ex => {
+        const mode = ex.mode || 'both';
+        return {
+          name: ex.name.trim(),
+          mode,
+          sets: ex.sets.filter(s => s.reps !== '').map(s => {
+            const base = { reps: parseInt(s.reps) || 0, weight: mode === 'bodyweight' ? 0 : (parseFloat(s.weight) || 0) };
+            if (mode === 'unilateral') base.repsR = parseInt(s.repsR !== undefined ? s.repsR : s.reps) || 0;
+            return base;
+          })
+        };
+      })
       .filter(ex => ex.sets.length > 0)
   };
   if (!workout.exercises.length) { alert('Přidej alespoň jeden cvik se sériemi.'); return; }
@@ -694,6 +755,12 @@ function doSave() {
 }
 
 function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function fmtSetBadge(s, mode) {
+  if (mode === 'unilateral') return `${s.reps}L / ${s.repsR !== undefined ? s.repsR : s.reps}P × ${s.weight} kg`;
+  if (mode === 'bodyweight') return `${s.reps} ×  TH`;
+  return `${s.reps} × ${s.weight} kg`;
+}
 
 // ─── STATS ────────────────────────────────────────────────────────────────────
 
@@ -750,6 +817,7 @@ function renderExStats(name) {
       occurrences.push({
         date: w.date,
         sets: ex.sets,
+        mode: ex.mode || 'both',
         maxW: maxWeight(ex),
         vol: ex.sets.reduce((a, s) => a + (parseFloat(s.weight)||0)*(parseInt(s.reps)||0), 0)
       });
@@ -777,7 +845,7 @@ function renderExStats(name) {
       <div class="card-label">Poslední tréninky (${Math.min(5,occurrences.length)})</div>
       ${occurrences.slice(-5).reverse().map(o => `<div style="margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border);">
         <div style="font-size:12px;color:var(--muted);margin-bottom:5px;">${fmtDate(o.date)}</div>
-        <div class="chips">${o.sets.map((s,i) => `<span class="set-badge">S${i+1}: ${s.reps}×${s.weight}kg</span>`).join('')}</div>
+        <div class="chips">${o.sets.map((s,i) => `<span class="set-badge">S${i+1}: ${fmtSetBadge(s, o.mode)}</span>`).join('')}</div>
       </div>`).join('')}
     </div>
   `;
