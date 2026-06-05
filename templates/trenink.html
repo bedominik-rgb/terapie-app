@@ -819,7 +819,8 @@ function renderExStats(name) {
         sets: ex.sets,
         mode: ex.mode || 'both',
         maxW: maxWeight(ex),
-        vol: ex.sets.reduce((a, s) => a + (parseFloat(s.weight)||0)*(parseInt(s.reps)||0), 0)
+        vol: ex.sets.reduce((a, s) => a + (parseFloat(s.weight)||0)*(parseInt(s.reps)||0), 0),
+        totalReps: ex.sets.reduce((a, s) => a + (parseInt(s.reps)||0), 0)
       });
     });
   });
@@ -830,15 +831,21 @@ function renderExStats(name) {
   }
 
   const lastOcc = occurrences[occurrences.length-1];
+  const isBW = occurrences.every(o => o.mode === 'bodyweight');
+  const maxReps = Math.max(...occurrences.map(o => o.totalReps));
 
   document.getElementById('ex-stats').innerHTML = `
     <div class="stats-grid" style="margin-bottom:14px;">
-      <div class="stat-card"><div class="stat-val" style="color:#f59e0b;">${pr}</div><div class="stat-lbl">Max. váha (kg)</div></div>
+      ${isBW
+        ? `<div class="stat-card"><div class="stat-val" style="color:#f59e0b;">${maxReps}</div><div class="stat-lbl">Max. opak. celkem</div></div>`
+        : `<div class="stat-card"><div class="stat-val" style="color:#f59e0b;">${pr}</div><div class="stat-lbl">Max. váha (kg)</div></div>`}
       <div class="stat-card"><div class="stat-val">${occurrences.length}</div><div class="stat-lbl">Tréninků</div></div>
-      <div class="stat-card"><div class="stat-val">${Math.round(lastOcc.vol).toLocaleString('cs')}</div><div class="stat-lbl">Objem naposledy</div></div>
+      ${isBW
+        ? `<div class="stat-card"><div class="stat-val">${lastOcc.totalReps}</div><div class="stat-lbl">Opak. naposledy</div></div>`
+        : `<div class="stat-card"><div class="stat-val">${Math.round(lastOcc.vol).toLocaleString('cs')}</div><div class="stat-lbl">Objem naposledy</div></div>`}
     </div>
     <div class="card">
-      <div class="card-label">Progres celkového objemu (kg × opak.)</div>
+      <div class="card-label">${isBW ? 'Progres celkového počtu opakování' : 'Progres celkového objemu (kg × opak.)'}</div>
       <div class="chart-container"><canvas id="ch"></canvas></div>
     </div>
     <div class="card">
@@ -859,8 +866,8 @@ function renderExStats(name) {
       data: {
         labels: occurrences.map(o => o.date),
         datasets: [{
-          label: 'Objem (kg)',
-          data: occurrences.map(o => Math.round(o.vol)),
+          label: isBW ? 'Opakování' : 'Objem (kg)',
+          data: occurrences.map(o => isBW ? o.totalReps : Math.round(o.vol)),
           borderColor: '#6366f1',
           backgroundColor: 'rgba(99,102,241,0.08)',
           borderWidth: 2.5,
