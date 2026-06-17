@@ -851,7 +851,7 @@ function fmtVol(v) {
 function exAccordionItem(name, pr, isOpen) {
   const isBW = isExBW(name);
   return `<div class="ex-acc-item" id="exa-${cssId(name)}">
-    <div class="ex-acc-head" onclick="toggleEx(${JSON.stringify(name)})">
+    <div class="ex-acc-head" onclick="toggleEx(${JSON.stringify(name).replace(/"/g,'&quot;')})">
       <div class="ex-acc-name">${escHtml(name)}</div>
       <div class="ex-acc-meta">
         ${!isBW && pr > 0 ? `<span class="chip-gold">${pr} kg</span>` : ''}
