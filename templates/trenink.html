@@ -408,10 +408,10 @@ function renderDashboard() {
     </div>` : ''}
 
     <div class="section-title">
-      Poslední trénink
-      <span class="section-link" onclick="showPage('history')">Všechny →</span>
+      Tréninky po měsících
+      <span class="section-link" onclick="showPage('history')">Historie →</span>
     </div>
-    ${workoutCard(lastW)}
+    ${monthlyBreakdown(d.workouts)}
 
     <div class="hr"></div>
 
@@ -439,6 +439,39 @@ function workoutCard(w, clickable = true) {
       ${w.exercises.map(ex => `<span class="chip">${ex.name}</span>`).join('')}
     </div>
   </div>`;
+}
+
+function fmtMonth(d) {
+  const names = ['Leden','Únor','Březen','Duben','Květen','Červen','Červenec','Srpen','Září','Říjen','Listopad','Prosinec'];
+  return `${names[d.getMonth()]} ${d.getFullYear()}`;
+}
+
+function monthlyBreakdown(workouts) {
+  const months = {};
+  workouts.forEach(w => {
+    const d = new Date(w.date + 'T12:00:00');
+    const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+    if (!months[key]) months[key] = { label: fmtMonth(d), types: {} };
+    const name = w.name ? w.name.trim() : '—';
+    months[key].types[name] = (months[key].types[name] || 0) + 1;
+  });
+
+  return Object.entries(months)
+    .sort((a, b) => b[0].localeCompare(a[0]))
+    .map(([, data]) => {
+      const total = Object.values(data.types).reduce((a, v) => a + v, 0);
+      const typeChips = Object.entries(data.types)
+        .sort((a, b) => b[1] - a[1])
+        .map(([name, count]) => `<span class="chip">${escHtml(name)} <strong>×${count}</strong></span>`)
+        .join('');
+      return `<div class="card" style="margin-bottom:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+          <span style="font-weight:700;font-size:15px;">${data.label}</span>
+          <span style="font-size:13px;color:var(--muted);font-weight:600;">${total}× celkem</span>
+        </div>
+        <div class="chips">${typeChips}</div>
+      </div>`;
+    }).join('');
 }
 
 // ─── HISTORY ─────────────────────────────────────────────────────────────────
